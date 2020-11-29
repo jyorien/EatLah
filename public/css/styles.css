@@ -1,0 +1,40 @@
+body {
+    background-color: #FCF4F1;
+}
+select,
+input,
+button {
+    height: 45px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+    
+}
+select {
+  padding-left: 5px;
+}
+input{
+  width: 35%;
+  padding-left: 5px;
+}
+button{
+    width:45px;
+
+}
+.search-inputs {
+    text-align: center;
+    background-image: url("../images/seach-bg-1.jpg");
+    background-size: auto;
+    background-size: cover;
+    padding: 50px;
+}
+
+.featured-box{
+    padding: 2% 0 0 5%;
+    padding-bottom: 100%;
+    margin: 0 15% 0 15%;
+    background-color: white;
+    border: 1px solid;
+
+    box-shadow: 0px 0px 3px #888888;
+}
