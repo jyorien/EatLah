@@ -12,17 +12,139 @@
 </head>
 <body>
     <div w3-include-html="top_navigation.html"></div>
+    <div w3-include-html="login_modal.html"></div>
 
       <form action="#"> 
         <div class="search-inputs">  
-            <select name="regions"> 
+            <select id="select_search" name="regions"> 
                 <option value="region1"> region1 </option> 
-            </select><input type="text"/><button type="submit"> <i class="fa fa-search"> </i></button>
+            </select><input id="text_search" type="text"/><button id="button_search" type="submit"> <i class="fa fa-search"> </i></button>
             </div>
       </form>
 
-      <div class="featured-box">
+      <div class="container featured-box">
           <h3>Featured</h3> 
+          <div class="row">
+            <!-- Restaurant Card Template -->
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+              <div class="card" style="margin:20px 0 20px 0;" >
+                <a class="card-block stretched-link" href="#"></a>
+                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Cat Ice Cream</h5>
+                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
+                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
+
+                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
+
+                </div>
+              </div>
+            </div>
+            
+              
+          </div>
+          
+          
+                
 
       </div>
 
