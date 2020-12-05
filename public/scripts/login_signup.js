@@ -11,7 +11,8 @@ function login() {
         response = JSON.parse(request.responseText);
         document.getElementById("loginForm").reset();
         if (response.message == "1") {
-            window.location = "index.html?username=" + credentials.username;
+            location.reload();
+            localStorage.setItem('user_name', credentials.username);
         }
         else {
             document.getElementById("message").textContent = response.message;
@@ -24,16 +25,18 @@ function login() {
 function welcome() {
     var urlParams = new URLSearchParams(window.location.search);
     var navElement;
-    if (urlParams == "") {
+    if ("user_name" in localStorage) {
+
+        navElement = '<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown"> </a> <div class="dropdown-menu"><a class="dropdown-item" href="#">Link 1</a><a class="dropdown-item" href="#">Link 2</a> <a class="dropdown-item" onclick="localStorage.clear(); location.reload();" href="#">Logout</a> </div>'
+        document.getElementById('topRightNavbar').insertAdjacentHTML("afterbegin",navElement); 
+        //var username = urlParams.getAll('username')
+        document.getElementById('profileDrop').textContent = localStorage.getItem('user_name');
+    }
+    else {
         navElement = '<li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#login_modal" href="#">Login </a> </li>'
         navElement += '<li class="nav-item"> <a class="nav-link" href="#">Sign Up </a></li>'
         document.getElementById('topRightNavbar').insertAdjacentHTML("afterbegin",navElement); 
-    }
-    else {
-        navElement = '<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown"> </a> <div class="dropdown-menu"><a class="dropdown-item" href="#">Link 1</a><a class="dropdown-item" href="#">Link 2</a> <a class="dropdown-item" href="#">Link 3</a> </div>'
-        document.getElementById('topRightNavbar').insertAdjacentHTML("afterbegin",navElement); 
-        var username = urlParams.getAll('username')
-        document.getElementById('profileDrop').textContent = username;
+        
     }
     
     

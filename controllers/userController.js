@@ -20,7 +20,7 @@ function authenticate(request, respond) {
             // If user can be found, result has one record
             if (result.length > 0) {
                 if (input_password == result[0].password) {
-                    msg = "1"; // "Success!";
+                    msg = "10"; // "Success!";
                     console.log(msg);
                 } else {
                     msg = "Login Fail!";
