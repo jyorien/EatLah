@@ -47,3 +47,4 @@ class User {
         return this.user_image;
     }
 }
+module.exports = User;
