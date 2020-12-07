@@ -43,6 +43,7 @@ function getRestaurantInfo(element) {
     request.onload = function () {
         info_array = JSON.parse(request.responseText);
         //console.log(info_array);
+        sessionStorage.setItem('restaurant_id', info_array[0].restaurant_id);
         sessionStorage.setItem('restaurant_name',info_array[0].restaurant_name);
         sessionStorage.setItem('restaurant_address',info_array[0].restaurant_address);
         sessionStorage.setItem('restaurant_description',info_array[0].description);
