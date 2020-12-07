@@ -38,18 +38,6 @@ class userDB{
           });
     }
 
-    getAllUsers(request, respond){
-        var sql = "SELECT * FROM eatlah_restaurant_review.user";
-        db.query(sql, function(error, result){
-            if(error){
-                throw error;
-            }
-            else{
-                respond.json(result);
-            }
-        });
-    }
-
      updateUserFirstName(request, respond){
        
         var userObject = new User(request.params.username, request.body.firstname);
