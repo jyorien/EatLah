@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>EatLah</title>
     <script src="scripts/login_signup.js"></script>
+    <script src="scripts/index.js"></script>
 </head>
 <body onload="welcome()">
     <div w3-include-html="top_navigation.html"></div>
@@ -25,15 +26,14 @@
 
       <div class="container featured-box">
           <h3>Featured</h3> 
-          <div class="row">
+          <div id="restaurantsTable"class="row">
             <!-- Restaurant Card Template -->
             <div class="col-md-3" style="float: none; margin: 0 auto;">
               <div class="card" style="margin:20px 0 20px 0;" >
                 <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
+                <img class="card-img-top" src="" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
                   <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
 
                   <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
@@ -42,106 +42,6 @@
               </div>
             </div>
 
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-              <div class="card" style="margin:20px 0 20px 0;" >
-                <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
-                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
-
-                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-              <div class="card" style="margin:20px 0 20px 0;" >
-                <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
-                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
-
-                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-              <div class="card" style="margin:20px 0 20px 0;" >
-                <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
-                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
-
-                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-              <div class="card" style="margin:20px 0 20px 0;" >
-                <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
-                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
-
-                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-              <div class="card" style="margin:20px 0 20px 0;" >
-                <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
-                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
-
-                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-              <div class="card" style="margin:20px 0 20px 0;" >
-                <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
-                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
-
-                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-              <div class="card" style="margin:20px 0 20px 0;" >
-                <a class="card-block stretched-link" href="#"></a>
-                <img class="card-img-top" src="https://bn1305files.storage.live.com/y4ms5b3bDoD9sV_G5k_0e9mT4IGwSAigGqhMtxwkRqvNO5bct9mIPgxlOh2-MAZ7dSlMb0rTJCxxxloqMon0Ns_2c1HG1P1ngRndQT135qHVSSOMJoYk5wL6dW2vrsz8FhkZEKqXSm0Wg73vg6-0h4UEnINF8HG-3va80-87THu_PNRMgbu8qYax84icmmT1dqS?width=736&height=1308&cropmode=none" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cat Ice Cream</h5>
-                  <span> 2 <i class="fa fa-heart" style="color:#ff0000;"></i></span>
-                  <span> 4.6 <i class="fa fa-star" style="color:#E7567C;"></i></span>
-
-                  <span class="badge badge-secondary float-right" style="background-color: red;">Cuisine</span>
-
-                </div>
-              </div>
-            </div>
-            
-              
           </div>
           
           
@@ -151,6 +51,7 @@
 
     
 
+<script>getFeaturedRestaurantData()</script> 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
