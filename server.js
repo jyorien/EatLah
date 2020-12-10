@@ -3,6 +3,7 @@
 const express = require("express");
 const routeUser = require('./routes/routeUser');
 const routeRestaurant = require('./routes/routeRestaurant');
+const routeReview = require('./routes/routeReview');
 
 const bodyParser = require("body-parser");
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 routeUser.routeUsers(app);
 routeRestaurant.routeRestaurants(app);
+routeReview.routeReviews(app);
 
 function gotoIndex(req, res) {
     console.log(req.params);

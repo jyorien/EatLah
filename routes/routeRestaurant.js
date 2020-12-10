@@ -1,5 +1,5 @@
 "use strict"
-const restaurantdb = require('../Models/RestaurantDB');
+const restaurantdb = require('../models/RestaurantDB');
 
 var restaurantDBObject = new restaurantdb();
 

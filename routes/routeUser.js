@@ -1,6 +1,6 @@
 "use strict"
 
-const userdb = require('../Models/UserDB');
+const userdb = require('../models/UserDB');
 
 var userDBObject = new userdb();
 
