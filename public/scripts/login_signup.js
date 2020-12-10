@@ -9,10 +9,12 @@ function login() {
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function() {
         response = JSON.parse(request.responseText);
+        console.log(response);
         document.getElementById("loginForm").reset();
-        if (response.message == "1") {
+        if (response[1] == credentials.username) {
             location.reload();
             localStorage.setItem('user_name', credentials.username);
+            localStorage.setItem('user_id', response[0]);
         }
         else {
             document.getElementById("message").textContent = response.message;

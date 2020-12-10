@@ -10,7 +10,7 @@ class userDB{
        console.log(username,password);
        var msg = "";
 
-       var sql = "SELECT password FROM user WHERE username = ?";
+       var sql = "SELECT password, user_id, username FROM user WHERE username = ?";
 
         db.query(sql, [username], function(error, result) {
             if(error){
@@ -21,19 +21,22 @@ class userDB{
                     if(password == result[0].password){
                         msg = "1";
                         console.log(msg);
+                        respond.json([result[0].user_id, result[0].username]);
                     }
                     else{
                         msg = "FAIL!";
                         console.log(msg);
+                        respond.json(prepareMessage(msg));
                     }
                 }
                 else{
                     msg = "USER NOT FOUND!";
                     console.log(msg);
+                    respond.json(prepareMessage(msg));
                     
                     
                 }
-                respond.json(prepareMessage(msg));
+                
             }
           });
     }
