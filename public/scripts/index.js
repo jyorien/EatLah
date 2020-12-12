@@ -36,7 +36,7 @@ function displayRestaurants() {
 
 function getRestaurantInfo(element) {
     var id = element.id;
-    var request_url = '/restaurant/'+id;
+    var request_url = '/restaurants/'+id;
     console.log(request_url);
     var request = new XMLHttpRequest();
     request.open('GET', request_url, true) 
@@ -60,5 +60,21 @@ function getRestaurantInfo(element) {
         window.location.href = 'restaurant_display.html';
     }
     request.send();
+
+    }
+    function getSearchResults() {
+        var select_search = document.getElementById('select_search').value;
+        var text_search = document.getElementById('text_search').value;
+        var request_url = `/search-restaurants/${text_search}/${select_search}/cuisine`
+        var request = new XMLHttpRequest();
+            
+            request.open('GET', request_url, true );
+            request.onload = function() {
+                sessionStorage.setItem('search_results', request.responseText);
+                window.location.href = 'search_results.html'
+            }
+            request.send()
+        
+
 
     }

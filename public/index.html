@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>EatLah</title>
     
+    <!-- Required scripts -->
     <script src="scripts/login_signup.js"></script>
+    <script src="scripts/restaurant_filters.js"></script>
     <script src="scripts/index.js"></script>
 </head>
 <body onload="welcome()">
@@ -20,8 +22,8 @@
       <form action="#"> 
         <div class="search-inputs">  
             <select id="select_search" name="regions"> 
-                <option value="region1"> region1 </option> 
-            </select><input id="text_search" type="text"/><button id="button_search" type="submit"> <i class="fa fa-search"> </i></button>
+                <option value="region"> region </option> 
+            </select><input id="text_search" type="text"/><button id="button_search" type="button" onclick="getSearchResults()"> <i class="fa fa-search"> </i></button>
             </div>
       </form>
 
