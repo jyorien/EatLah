@@ -6,13 +6,21 @@
     <title>Document</title>
     <!-- Latest compiled and minified CSS -->
     <!-- Bootstrap CSS -->
-    <script src="scripts/login_signup.js"> </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Required scripts -->
+    <script src="scripts/login_signup.js"></script>
+    <script src="scripts/restaurant_filters.js"></script>
+    
 </head>
 <body onload="welcome()">
+
+    <!-- Required files-->
     <div w3-include-html="top_navigation.html"></div>
+    <div w3-include-html="login_modal.html"></div>
+    
     <h2 id='res_name'> Restaurant Name </h2>
     <h4 id = 'res_address'> Address </h4>
     <h4 id = 'res_desc'> Description </h4> 

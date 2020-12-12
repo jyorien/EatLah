@@ -22,7 +22,7 @@ function displayRestaurants() {
         var restaurant_image = restaurant_array[i].featured_url;
         var cell = '<div class="col-md-3" style="float: none; margin: 0 auto;">' + 
                     '<div class="card" style="margin:20px 0 20px 0;" >' +
-                    '<a class="card-block stretched-link"' + 'id='+restaurant_id +' + onclick='+'getRestaurantInfo(this)'+'></a>' +
+                    '<a class="card-block stretched-link"' + 'id='+restaurant_id +' + href="#" onclick='+'getRestaurantInfo(this)'+'></a>' +
                     '<img class="card-img-top" src=' + restaurant_image + ' alt="Card image cap">' +
                     '<div class="card-body">' +
                     '<h5 class="card-title" style="overflow:hidden; text-overflow: ellipsis; word-wrap: brea-word; display:block; line-height: 1em; max-height: 1em;">' + restaurant_name +'</h5>' +
@@ -63,8 +63,8 @@ function getRestaurantInfo(element) {
 
     }
     function getSearchResults() {
-        var select_search = document.getElementById('select_search').value;
-        var text_search = document.getElementById('text_search').value;
+        var select_search = document.getElementById('select_search').value; // region
+        var text_search = document.getElementById('text_search').value; // string
         var request_url = `/search-restaurants/${text_search}/${select_search}/cuisine`
         var request = new XMLHttpRequest();
             
