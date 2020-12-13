@@ -32,7 +32,7 @@ body {
 /* white box for featured section */
 .featured-box{
     padding: 2% 5% 0 5%;
-    padding-bottom: 2%%;
+    padding-bottom: 2%;
     margin: 0 15% 0 15%;
     background-color: white;
     border: 1px solid;
@@ -46,3 +46,51 @@ body {
     object-fit: cover;
 }
 
+.line {
+    width: 512px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    position: absolute;
+}
+
+.star {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    color: #ddd;
+  }
+  
+  /*.star {
+    display: inline-block;
+    position: relative;
+    color: #ddd;
+  }*/
+  
+  .star:after {
+    font-family: FontAwesome;
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    overflow: hidden;
+    color: #E7567C;
+  }
+
+  .rating {
+    display: inline-block
+  }
+
+  .comment {
+    padding-top: 20px;
+     border-style: solid; 
+     border-top: none; 
+     border-left: none; 
+     border-right: none; 
+     border-width: 1px;
+     width: 512px;
+  }
+  
+  .modify-buttons {
+    padding-left: 50px;
+  }

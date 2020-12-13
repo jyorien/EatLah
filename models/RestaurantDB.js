@@ -3,7 +3,12 @@ var db = require('../db-connection');
 
 class restaurantDB {
     getFeaturedRestaurantDetails(request,respond) {
-        var sql = 'SELECT restaurant.restaurant_id, restaurant.restaurant_name, restaurant.featured_url, cuisine.cuisine_name, cuisine.cuisine_color,avg(review.overall_rating) as average FROM restaurant INNER JOIN review ON restaurant.restaurant_id = review.restaurant_id INNER JOIN cuisine ON restaurant.cuisine_id = cuisine.cuisine_id GROUP BY restaurant.restaurant_id ORDER BY avg(review.overall_rating) DESC LIMIT 8';
+        var sql = `SELECT restaurant.restaurant_id, restaurant.restaurant_name, restaurant.featured_url, cuisine.cuisine_name, cuisine.cuisine_color,avg(review.overall_rating) as average FROM restaurant 
+        INNER JOIN review ON restaurant.restaurant_id = review.restaurant_id 
+        INNER JOIN cuisine ON restaurant.cuisine_id = cuisine.cuisine_id 
+        GROUP BY restaurant.restaurant_id 
+        ORDER BY avg(review.overall_rating) 
+        DESC LIMIT 8`;
         db.query(sql, function(error,result){
                 if (error){
                     throw error;
@@ -14,7 +19,11 @@ class restaurantDB {
         });
     }
     getRestaurantDetails(request,respond) {
-        var sql = 'SELECT * FROM restaurant INNER JOIN cuisine ON restaurant.cuisine_id = cuisine.cuisine_id WHERE restaurant_id = ?';
+        var sql = `SELECT restaurant.*, cuisine.cuisine_color, cuisine.cuisine_name, avg(review.overall_rating) as average_overall, avg(review.food_rating) as average_food, avg(review.service_rating) as average_service, avg(review.value_rating) as average_value, count(review.review_id) as total_reviews FROM restaurant
+        INNER JOIN review ON restaurant.restaurant_id = review.restaurant_id 
+        INNER JOIN cuisine ON restaurant.cuisine_id = cuisine.cuisine_id 
+        WHERE restaurant.restaurant_id = ?
+        GROUP BY restaurant.restaurant_id `;
         var id = request.params.id;
         db.query(sql, id, function(error,result) {
             if (error){

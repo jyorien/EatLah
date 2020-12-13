@@ -9,19 +9,181 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    
 
     <!-- Required scripts -->
     <script src="scripts/login_signup.js"></script>
     <script src="scripts/restaurant_filters.js"></script>
+    <script src='scripts/restaurant_display.js'></script> 
     
 </head>
 <body onload="welcome()">
-
     <!-- Required files-->
     <div w3-include-html="top_navigation.html"></div>
     <div w3-include-html="login_modal.html"></div>
+    <img src="https://yoshinoya.com.sg/wp-content/uploads/2017/05/home-separator-image-736x414.jpg" style="padding: 0 5% 0 5%; display: block; margin-left: auto; margin-right: auto; width: 80%; height: 500px; object-fit: cover;">
+    <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 20px;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Address</h5>
+          <p id="res_address"class="card-text"></p>
+          
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 310px;">
+        <div class="card-body">
+            <h5 class="card-title">Contact Details</h5>
+            <p  class="card-text"> 
+            <div>
+                <i class="fa fa-phone"></i>
+                <span id="res_number"></span>
+            </div>
+            <div> 
+                <i class="fa fa-link"></i>
+                <a id="res_url" ></a>
+
+            </div>
+        </p>
+          
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 470px;">
+        <div class="card-body">
+            <h5 class="card-title">Operating Hours</h5>
+            <p  id="res_hours"class="card-text" style="width: 190px">
+
+                
+        
+        </p>
+          
+        </div>
+    </div>
+
+    <div id='restaurant_details' class='featured-box'> 
+        <h2 id='res_name'> Restaurant Name </h2>
+        <div style="padding-bottom: 50px;"> 
+        <span id='res_badge' class="badge badge-secondary float-left"> 
+            <div id='res_cuisine' style="font-size:medium;"> cuisine  </div>
+        </span>
+        <div class="line"> </div>
+        </div>
+
+        <div style="padding-top: 20px;">
+        <!-- stars and overall rating -->
+        <span id="overall_ratings">
+            <i class="star fa fa-star" ></i>
+            <i class="star fa fa-star"></i>
+            <i class="star fa fa-star"></i>
+            <i class="star fa fa-star"></i>
+            <i class="star star-fill fa fa-star"></i>
+            <div id='average_overall' style="display: inline; font-size: 18px;"> 0</div>
+          </span>
+
+        <!-- Review count -->
+        <span id="reviews_count" style="padding-left: 20px"> 
+            <i class="fa fa-comments-o" style="font-size: 25px;"> </i>
+            <div id='total_reviews' style="display: inline; font-size: 18px;"> 0 </div>
+        </span>
+        </div>
+        
+        <div style="padding-top: 20px;"> 
+        <div class="line" style="margin-top: 10px;"> </div>
+
+        <!-- Review button -->
+        <button type="button" class="btn btn-primary" style="background-color: #E2757F; border: none;">
+            <i class="fa fa-pencil-square-o" style="font-size: 20px;"></i> Write a Review</button> 
+
+        <!-- Favourite button -->
+        <div style="padding-left: 20px; display: inline;" > 
+        <button type="button" class="btn btn-primary" style="background-color: #E2757F; border: none;"> 
+            <i class="fa fa-heart-o"></i> Add to Favourites </button>
+        </div>
+
+        </div>
+        
+        <!-- About section -->
+        <div style="padding-top: 30px"> 
+            <h3>About</h3> 
+            <p id='description' style="width: 510px; border-bottom: 1px solid black; border-style: solid; border-top: none; border-left: none; border-right: none; padding-bottom: 20px; "> help</p>
+            
+        </div>
+        
+        <!-- Overall ratings -->
+        <div style="width: 510px; border-bottom: 1px solid black; border-style: solid; border-top: none; border-left: none; border-right: none; padding-bottom: 20px; "> 
+            <h3> Overall Ratings </h3>
+            <i class="star fa fa-star" ></i>
+            <i class="star fa fa-star"></i>
+            <i class="star fa fa-star"></i>
+            <i class="star fa fa-star"></i>
+            <i class="star star-fill fa fa-star"></i>
+            <div id='average_overall_rating' style="display: inline-block; font-size: 18px;"> 0</div>
+            
+            <div style="display: block;">
+            <div class="rating" style="padding-top: 10px;"> 
+                <h4 id="average_food_rating" style="padding-left: 6px;"> 0.0 </h4>
+                <h5> Food </h5>
+            </div>
+
+            <div class="rating" style="padding-left: 11px;"> 
+                <h4 id="average_service_rating" style="padding-left: 15px;">0.0</h4>
+                <h5>Service</h5> 
+            </div>
+
+            <div class="rating" style="padding-left: 11px;"> 
+                <h4 id="average_value_rating" style="padding-left: 10px;">0.0</h4>
+                <h5>Value</h5> 
+            </div>
+            </div> 
+
+            <span> <i class="fa fa-thumbs-o-up" style="font-size: 25px; padding-right: 5px;"></i><span id='recommend'> </span> of rewiewers would recommend to a friend</span>
+            
+        </div>
+        <!-- Reviews Section -->
+        <div> 
+        <h2> Reviews </h2> 
+        <select id="reviews_sort" onchange="sort_reviews(value)">
+            <option value="newest">Newest </option> 
+            <option value="highest">Highest Rating </option> 
+            <option value="lowest">Lowest Rating </option> 
+
+        </select>
+
+        <div id='commentSection'> 
+            <div class="comment"> 
+                <span style="display: block; padding-bottom: 10px;"> Username</span>
+                <h5 style="display:inline"> Review title</h5>
+                <span style="display: inline-block; padding-left: 30px;">13/12/2020 10:56 pm</span>
+
+                <span style="display: block">
+                <i class="star fa fa-star" ></i>
+                <i class="star fa fa-star"></i>
+                <i class="star fa fa-star"></i>
+                <i class="star fa fa-star"></i>
+                <i class="star star-fill fa fa-star"></i>
+                </span>
+                <div> 
+                    <i> Food </i> <i> 0 </i> 
+                    <i> Service </i> <i> 0 </i> 
+                    <i> Value </i> <i> 0 </i> 
+                </div>
+                <p> Review body</p>
+                <span class="modify-buttons"> 
+                   <span> Edit </span>  
+                   <span style="padding-left: 5px;"> Delete </span>
+                </span>
+            </div>
+        </div>
+        
+        </div>
+
+
+        
+    </div>
+
     
-    <h2 id='res_name'> Restaurant Name </h2>
+    <!-- <h2 id='res_name'> Restaurant Name </h2>
     <h4 id = 'res_address'> Address </h4>
     <h4 id = 'res_desc'> Description </h4> 
     <h4 id = 'res_number'> Number </h4>
@@ -29,13 +191,13 @@
     <h4 id = 'res_hours'> hours </h4>
     <h4 id = 'res_min'>  min price </h4>
     <h4 id = 'res_max'> max price </h4>
-    <h4 id = 'res_cuisine'> cuisine</h4>    
+    <h4 id = 'res_cuisine'> cuisine</h4>  -->
     
-    <div id='commentSection'> </div>
+    
 
 
 
-<script src='scripts/restaurant_display.js'></script> 
+
 <script> retrieveInfo()</script>   
 <script> retrieveComments()</script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
