@@ -22,6 +22,7 @@ function login() {
         
     }
     request.send(JSON.stringify(credentials));
+    
 }
 
 function welcome() {

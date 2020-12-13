@@ -1,27 +1,32 @@
 function getCuisineFilterResults(filter) {
+    var cusine_object = new Object();
+    cusine_object.cuisine = filter;
     var request = new XMLHttpRequest();
-    var request_url = `/search-restaurants/search/region/${filter}`
-    console.log(request_url)
-    request.open('GET', request_url)
+    var request_url = '/search-restaurants'
+
+    request.open('POST', request_url)
+    request.setRequestHeader("Content-type", "application/json");
     request.onload = function () {
         sessionStorage.setItem('search_results', request.responseText);
         window.location.href = 'search_results.html'
         
     }
-    request.send();
+    request.send(JSON.stringify(cusine_object));
 
 }
 
 function getRegionFilterResults(filter) {
-    console.log(filter)
+    var region_object = new Object();
+    region_object.region = filter;
     var request = new XMLHttpRequest();
-    var request_url = `/search-restaurants/search/${filter}/cuisine`
-    console.log(request_url)
-    request.open('GET', request_url)
+    var request_url = '/search-restaurants'
+
+    request.open('POST', request_url)
+    request.setRequestHeader("Content-type", "application/json");
     request.onload = function () {
         sessionStorage.setItem('search_results', request.responseText);
-        window.location.href = 'search_results.html'
+        window.location.href = 'search_results.html';
         
     }
-    request.send();
+    request.send(JSON.stringify(region_object));
 }

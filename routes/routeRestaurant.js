@@ -8,8 +8,8 @@ function routeRestaurants(app) {
         .get(restaurantDBObject.getFeaturedRestaurantDetails);
     app.route('/restaurants/:id')
         .get(restaurantDBObject.getRestaurantDetails);   
-    app.route('/search-restaurants/:search_query/:region/:cuisine')
-        .get(restaurantDBObject.getSearchResults);
+    app.route('/search-restaurants')
+        .post(restaurantDBObject.getSearchResults);
         
 }   
 
