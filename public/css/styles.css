@@ -53,26 +53,73 @@ body {
     position: absolute;
 }
 
-.star {
+.pink-star {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    color: #E7567C;
+  }
+
+  .grey-star {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    color: #ddd;
+  }
+
+  .three-quarter-star {
     display: inline-block;
     position: relative;
     font-size: 30px;
     color: #ddd;
   }
   
-  /*.star {
-    display: inline-block;
-    position: relative;
-    color: #ddd;
-  }*/
   
-  .star:after {
+  .three-quarter-star:after {
     font-family: FontAwesome;
     content: "\f005";
     position: absolute;
     left: 0;
     top: 0;
-    width: 0%;
+    width: 75%;
+    overflow: hidden;
+    color: #E7567C;
+  }
+
+  .half-star {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    color: #ddd;
+  }
+  
+  
+  .half-star:after {
+    font-family: FontAwesome;
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+    color: #E7567C;
+  }
+
+  .quarter-star {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    color: #ddd;
+  }
+  
+  
+  .quarter-star:after {
+    font-family: FontAwesome;
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
     overflow: hidden;
     color: #E7567C;
   }
@@ -83,14 +130,24 @@ body {
 
   .comment {
     padding-top: 20px;
+    padding-bottom: 15px;
      border-style: solid; 
      border-top: none; 
      border-left: none; 
      border-right: none; 
      border-width: 1px;
-     width: 512px;
+     width: 612px;
   }
   
   .modify-buttons {
-    padding-left: 50px;
+    padding-left: 500px;
+
+  }
+
+  .see-more {
+    padding-left: 240px; 
+    color: #0000EE !important;
+  }
+  .see-more:hover {
+    cursor: pointer;
   }
