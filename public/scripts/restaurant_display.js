@@ -3,6 +3,11 @@ comments_count = 0;
 var percentage_recommend = 0;
 var average_overall;
 
+var user_overall;
+var user_food;
+var user_service;
+var user_value;
+
 function retrieveInfo () {
     var name = sessionStorage.getItem('restaurant_name');
     var address = sessionStorage.getItem('restaurant_address');
@@ -25,7 +30,7 @@ function retrieveInfo () {
     document.getElementById('res_name').innerHTML = name;
     document.getElementById('res_cuisine').innerHTML = cuisine;
     document.getElementById('res_badge').style.backgroundColor = cuisine_color;
-    document.getElementById('average_overall_rating1').innerHTML = average_overall;
+    //document.getElementById('average_overall_rating1').innerHTML = average_overall;
     document.getElementById('total_reviews').innerHTML = total_reviews;
     document.getElementById('description').innerHTML = description;
     document.getElementById('average_food_rating').innerHTML = average_food;
@@ -215,7 +220,6 @@ function display_stars() {
         }
         
         overall_ratings.insertAdjacentHTML('beforeend', star); 
-
     }
 
     if (Math.ceil(5-average_overall) != 0 ) {
@@ -226,5 +230,149 @@ function display_stars() {
             }
 
     }
+    overall_number = `<div id='average_overall_rating1' style="display: inline; font-size: 18px; padding-left: 10px;">`+ average_overall +`</div>`
+    overall_ratings.insertAdjacentHTML('beforeend', overall_number)
     console.log(rating)
+}
+// set attributes for write a review button and add to favourites button
+function set_button_attributes() {
+    btn_review = document.getElementById('btn_review');
+    btn_favourite = document.getElementById('btn_favourite');
+    if (localStorage.getItem('user_name') != null && localStorage.getItem('user_name') != "") {
+        btn_review = document.getElementById('btn_review');
+        btn_review.dataset.toggle = 'modal';
+        btn_review.dataset.target = '#new_review'
+    }
+
+    else {
+        btn_review.setAttribute('onclick', "alert('You must be logged in to write a review!')")
+        btn_favourite.setAttribute('onclick',"alert('You must be logged in to add this restaurant to favourites!')")
+    }
+} 
+
+function star_ratings(element) {
+    var rating_value = element.getAttribute("value");
+    console.log('rating value: '+ rating_value)
+    var class_names = ["rating-stars-overall", "rating-stars-food", "rating-stars-service", "rating-stars-value"]
+    var rating_class;
+
+    if (element.classList.contains(class_names[0])) {
+        rating_class = class_names[0];
+        console.log("rating class: "+ rating_class)
+    }
+    else if (element.classList.contains(class_names[1])) {
+        rating_class = class_names[1];
+        console.log("rating class: "+ rating_class)
+    }
+    else if (element.classList.contains(class_names[2])) {
+        rating_class = class_names[2];
+        console.log("rating class: "+ rating_class)
+    }
+
+    else if (element.classList.contains(class_names[3])) {
+        rating_class = class_names[3];
+        console.log("rating class: "+ rating_class)
+    }
+    var stars = document.getElementsByClassName(rating_class);
+    var classTarget = "." + rating_class;
+    
+
+    for (let star of stars){
+        star.className = "grey-star fa fa-star " + rating_class;
+        console.log('grey star')
+    }
+    changeStarColour(rating_value, classTarget, rating_class, class_names);
+}
+
+function changeStarColour(num, classTarget, rating_class, class_names) {
+    console.log("class target: " +classTarget);
+    switch (eval(num)) {
+        case 1:
+            document.querySelector(classTarget + "[value='1']").className = "pink-star fa fa-star " + rating_class;
+            if (rating_class == class_names[0]) {
+                user_overall = 1;
+            }
+            else if (rating_class == class_names[1]) {
+                user_food = 1;
+            }
+            else if (rating_class == class_names[2]) {
+                user_service = 1;
+            }
+            else if (rating_class == class_names[3]) {
+                user_value = 1;
+            }   
+
+            break;
+        case 2:
+            document.querySelector(classTarget + "[value='1']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='2']").className = "pink-star fa fa-star " + rating_class;
+            if (rating_class == class_names[0]) {
+                user_overall = 2;
+            }
+            else if (rating_class == class_names[1]) {
+                user_food = 2;
+            }
+            else if (rating_class == class_names[2]) {
+                user_service = 2;
+            }
+            else if (rating_class == class_names[3]) {
+                user_value = 2;
+            }  
+            break;
+        case 3:
+            document.querySelector(classTarget + "[value='1']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='2']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='3']").className = "pink-star fa fa-star " + rating_class;
+            if (rating_class == class_names[0]) {
+                user_overall = 3;
+            }
+            else if (rating_class == class_names[1]) {
+                user_food = 3;
+            }
+            else if (rating_class == class_names[2]) {
+                user_service = 3;
+            }
+            else if (rating_class == class_names[3]) {
+                user_value = 3;
+            }  
+            break;
+        case 4:
+            document.querySelector(classTarget + "[value='1']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='2']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='3']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='4']").className = "pink-star fa fa-star " + rating_class;
+            if (rating_class == class_names[0]) {
+                user_overall = 4;
+            }
+            else if (rating_class == class_names[1]) {
+                user_food = 4;
+            }
+            else if (rating_class == class_names[2]) {
+                user_service = 4;
+            }
+            else if (rating_class == class_names[3]) {
+                user_value = 4;
+            }  
+            break;
+        case 5:
+            document.querySelector(classTarget + "[value='1']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='2']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='3']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='4']").className = "pink-star fa fa-star " + rating_class;
+            document.querySelector(classTarget + "[value='5']").className = "pink-star fa fa-star " + rating_class;
+            if (rating_class == class_names[0]) {
+                user_overall = 5;
+            }
+            else if (rating_class == class_names[1]) {
+                user_food = 5;
+            }
+            else if (rating_class == class_names[2]) {
+                user_service = 5;
+            }
+            else if (rating_class == class_names[3]) {
+                user_value = 5;
+            }  
+            break;
+    }
+    console.log("overall " + user_overall + " food " + user_food + " service " + user_service + " value " + user_value)
 }

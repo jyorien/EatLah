@@ -151,3 +151,10 @@ body {
   .see-more:hover {
     cursor: pointer;
   }
+
+  .user-ratings {
+    display: inline-block;
+    width: 70px;
+    max-width: 70px;
+    font-weight: 600;
+  }

@@ -74,7 +74,7 @@
         <!-- stars and overall rating -->
         <span id="overall_ratings">
  
-            <div id='average_overall_rating1' style="display: inline; font-size: 18px;"> 0</div>
+            
           </span>
 
         <!-- Review count -->
@@ -88,12 +88,12 @@
         <div class="line" style="margin-top: 10px;"> </div>
 
         <!-- Review button -->
-        <button type="button" class="btn btn-primary" style="background-color: #E2757F; border: none;" data-toggle="modal" data-target="#new_review">
+        <button type="button" id="btn_review" class="btn btn-primary" style="background-color: #E2757F; border: none;">
             <i class="fa fa-pencil-square-o" style="font-size: 20px;"></i> Write a Review</button> 
 
         <!-- Favourite button -->
         <div style="padding-left: 20px; display: inline;" > 
-        <button type="button" class="btn btn-primary" style="background-color: #E2757F; border: none;"> 
+        <button type="button" id="btn_favourite" class="btn btn-primary" style="background-color: #E2757F; border: none;"> 
             <i class="fa fa-heart-o"></i> Add to Favourites </button>
         </div>
 
@@ -179,30 +179,77 @@
   </button>
   
   <!-- Modal -->
-  <div class="modal fade" id="new_review" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="new_review" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" style="height:600px;">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Write a Review</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+            <div>
+          <div class="user-ratings">Overall </div> 
+          <span> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='1' onmouseover="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='2' onmouseover="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='3' onmouseover="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='4' onmouseover="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='5' onmouseover="star_ratings(this)" ></i> 
+            </span>
+            </div> 
+            <div>
+            <div class="user-ratings">Food </div> 
+            <span> 
+                <i class="grey-star fa fa-star rating-stars-food" value='1' onmouseover="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='2' onmouseover="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='3' onmouseover="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='4' onmouseover="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='5' onmouseover="star_ratings(this)" ></i> 
+              </span>
+            </div>
+            <div>
+              <div class="user-ratings">Service </div> 
+              <span> 
+                  <i class="grey-star fa fa-star rating-stars-service"  value='1' onmouseover="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='2' onmouseover="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='3' onmouseover="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='4' onmouseover="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service"value='5' onmouseover="star_ratings(this)"></i> 
+                  </span>
+                </div>
+
+                <div>
+                    <div class="user-ratings">Value </div> 
+                    <span> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='1' onmouseover="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='2' onmouseover="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='3' onmouseover="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='4' onmouseover="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='5' onmouseover="star_ratings(this)" ></i> 
+                        </span>
+                      </div>
+
+                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;"> Title </label>
+                      <input type="text"  id="user_title"style="width: 100%;">
+
+                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;"> Comment </label>
+                      <textarea id="user_comment" style="width: 100%; height: 40%;"> </textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Post</button>
+                  </div>
+            </div>
+            
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
     </div>
-  </div>
-
-
-<script> retrieveInfo()</script>   
+                  
+<script> retrieveInfo()</script>
 <script> retrieveComments()</script>
 <script> display_stars() </script>
+<script> set_button_attributes()</script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
