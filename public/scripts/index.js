@@ -75,7 +75,7 @@ function getRestaurantInfo(element) {
         var request_url = '/search-restaurants'
         var request = new XMLHttpRequest();
 
-        request.open('POST', request_url, true );
+        request.open('POST', request_url, true);
         request.setRequestHeader("Content-type", "application/json");
         request.onload = function() {
             sessionStorage.setItem('search_results', request.responseText);

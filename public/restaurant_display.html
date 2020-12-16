@@ -73,8 +73,6 @@
         <div style="padding-top: 20px;">
         <!-- stars and overall rating -->
         <span id="overall_ratings">
- 
-            
           </span>
 
         <!-- Review count -->
@@ -173,15 +171,11 @@
         
     </div>
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_review">
-    Launch demo modal
-  </button>
   
-  <!-- Modal -->
+  <!-- New Review Modal -->
   <div class="modal fade" id="new_review" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-      <div class="modal-content" style="height:600px;">
+      <div class="modal-content" style="height:740px;">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Write a Review</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -190,57 +184,152 @@
         </div>
         <div class="modal-body">
             <div>
+        <form> 
           <div class="user-ratings">Overall </div> 
           <span> 
-              <i class="grey-star fa fa-star rating-stars-overall" value='1' onmouseover="star_ratings(this)" ></i> 
-              <i class="grey-star fa fa-star rating-stars-overall" value='2' onmouseover="star_ratings(this)" ></i> 
-              <i class="grey-star fa fa-star rating-stars-overall" value='3' onmouseover="star_ratings(this)" ></i> 
-              <i class="grey-star fa fa-star rating-stars-overall" value='4' onmouseover="star_ratings(this)" ></i> 
-              <i class="grey-star fa fa-star rating-stars-overall" value='5' onmouseover="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='1' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='2' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='3' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='4' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='5' onmousedown="star_ratings(this)" ></i> 
             </span>
             </div> 
             <div>
             <div class="user-ratings">Food </div> 
             <span> 
-                <i class="grey-star fa fa-star rating-stars-food" value='1' onmouseover="star_ratings(this)" ></i> 
-                <i class="grey-star fa fa-star rating-stars-food" value='2' onmouseover="star_ratings(this)" ></i> 
-                <i class="grey-star fa fa-star rating-stars-food" value='3' onmouseover="star_ratings(this)" ></i> 
-                <i class="grey-star fa fa-star rating-stars-food" value='4' onmouseover="star_ratings(this)" ></i> 
-                <i class="grey-star fa fa-star rating-stars-food" value='5' onmouseover="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='1' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='2' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='3' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='4' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='5' onmousedown="star_ratings(this)" ></i> 
               </span>
             </div>
             <div>
               <div class="user-ratings">Service </div> 
               <span> 
-                  <i class="grey-star fa fa-star rating-stars-service"  value='1' onmouseover="star_ratings(this)"></i> 
-                  <i class="grey-star fa fa-star rating-stars-service" value='2' onmouseover="star_ratings(this)"></i> 
-                  <i class="grey-star fa fa-star rating-stars-service" value='3' onmouseover="star_ratings(this)"></i> 
-                  <i class="grey-star fa fa-star rating-stars-service" value='4' onmouseover="star_ratings(this)"></i> 
-                  <i class="grey-star fa fa-star rating-stars-service"value='5' onmouseover="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service"  value='1' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='2' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='3' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='4' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service"value='5' onmousedown="star_ratings(this)"></i> 
                   </span>
                 </div>
 
                 <div>
                     <div class="user-ratings">Value </div> 
                     <span> 
-                        <i class="grey-star fa fa-star rating-stars-value" value='1' onmouseover="star_ratings(this)" ></i> 
-                        <i class="grey-star fa fa-star rating-stars-value" value='2' onmouseover="star_ratings(this)" ></i> 
-                        <i class="grey-star fa fa-star rating-stars-value" value='3' onmouseover="star_ratings(this)" ></i> 
-                        <i class="grey-star fa fa-star rating-stars-value" value='4' onmouseover="star_ratings(this)" ></i> 
-                        <i class="grey-star fa fa-star rating-stars-value" value='5' onmouseover="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='1' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='2' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='3' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='4' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='5' onmousedown="star_ratings(this)" ></i> 
                         </span>
                       </div>
 
-                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;"> Title </label>
-                      <input type="text"  id="user_title"style="width: 100%;">
+                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;" > Title </label>
+                      <input type="text" id="user_title"style="width: 100%;">
 
                       <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;"> Comment </label>
                       <textarea id="user_comment" style="width: 100%; height: 40%;"> </textarea>
 
+                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;"> Would you recommend this to a friend?</label>
+                      
+                      <div class="btn-group-toggle"  data-toggle="buttons" style="margin-left: 5%;">
+                        <label class="btn btn-success" class="test-class">
+                            <input type="radio" name="recommend" id="btn-yes" value=1 autocomplete="off"> <i class="fa fa-thumbs-o-up"> </i> Yes
+                          </label> 
+                          <label class="btn btn-danger">
+                            <input type="radio" name="recommend" id="btn-no" value=0 autocomplete="off"> <i class="fa fa-thumbs-o-down"> </i> No
+                          </label>
+                      </div>
+                      
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Post</button>
+                    <button type="button" class="btn btn-default" onclick="addNewReview()">Post</button>
                   </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+
+      <!-- Edit Review Modal -->
+  <div class="modal fade" id="edit_review" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="height:740px;">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Review</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div>
+        <form> 
+          <div class="user-ratings">Overall </div> 
+          <span> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='1' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='2' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='3' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='4' onmousedown="star_ratings(this)" ></i> 
+              <i class="grey-star fa fa-star rating-stars-overall" value='5' onmousedown="star_ratings(this)" ></i> 
+            </span>
+            </div> 
+            <div>
+            <div class="user-ratings">Food </div> 
+            <span> 
+                <i class="grey-star fa fa-star rating-stars-food" value='1' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='2' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='3' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='4' onmousedown="star_ratings(this)" ></i> 
+                <i class="grey-star fa fa-star rating-stars-food" value='5' onmousedown="star_ratings(this)" ></i> 
+              </span>
+            </div>
+            <div>
+              <div class="user-ratings">Service </div> 
+              <span> 
+                  <i class="grey-star fa fa-star rating-stars-service"  value='1' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='2' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='3' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service" value='4' onmousedown="star_ratings(this)"></i> 
+                  <i class="grey-star fa fa-star rating-stars-service"value='5' onmousedown="star_ratings(this)"></i> 
+                  </span>
+                </div>
+
+                <div>
+                    <div class="user-ratings">Value </div> 
+                    <span> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='1' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='2' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='3' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='4' onmousedown="star_ratings(this)" ></i> 
+                        <i class="grey-star fa fa-star rating-stars-value" value='5' onmousedown="star_ratings(this)" ></i> 
+                        </span>
+                      </div>
+
+                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;" > Title </label>
+                      <input type="text" id="user_title"style="width: 100%;">
+
+                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;"> Comment </label>
+                      <textarea id="user_comment" style="width: 100%; height: 40%;"> </textarea>
+
+                      <label style="display: block; font-weight: 600; padding-top: 10px; font-size: 20px;"> Would you recommend this to a friend?</label>
+                      
+                      <div class="btn-group-toggle"  data-toggle="buttons" style="margin-left: 5%;">
+                        <label class="btn btn-success" class="test-class">
+                            <input type="radio" name="recommend" id="btn-yes" value=1 autocomplete="off"> <i class="fa fa-thumbs-o-up"> </i> Yes
+                          </label> 
+                          <label class="btn btn-danger">
+                            <input type="radio" name="recommend" id="btn-no" value=0 autocomplete="off"> <i class="fa fa-thumbs-o-down"> </i> No
+                          </label>
+                      </div>
+                      
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="addNewReview()">Post</button>
+                  </div>
+                </form>
             </div>
             
         </div>

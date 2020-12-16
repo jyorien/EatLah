@@ -1,8 +1,10 @@
+//const { request } = require("http");
+
 comments_array=[]
 comments_count = 0;
 var percentage_recommend = 0;
 var average_overall;
-
+var total_reviews;
 var user_overall;
 var user_food;
 var user_service;
@@ -25,7 +27,7 @@ function retrieveInfo () {
     var average_food = parseFloat(sessionStorage.getItem('average_food')).toFixed(1);
     var average_service = parseFloat(sessionStorage.getItem('average_service')).toFixed(1);
     var average_value = parseFloat(sessionStorage.getItem('average_value')).toFixed(1);
-    var total_reviews = sessionStorage.getItem('total_reviews');
+    total_reviews = sessionStorage.getItem('total_reviews');
 
     document.getElementById('res_name').innerHTML = name;
     document.getElementById('res_cuisine').innerHTML = cuisine;
@@ -52,7 +54,7 @@ function retrieveInfo () {
 
 
 function retrieveComments() {
-    request = new XMLHttpRequest();
+    var request = new XMLHttpRequest();
 
     var id = sessionStorage.getItem('restaurant_id');
     var request_url = '/reviews/'+id;
@@ -130,14 +132,14 @@ function displayComments(number) {
             <i> Value </i> <i>`+ value_rating +` </i> 
         </div>`
         if (comment != null && comment != "") {
-            cell += ` <div style="padding-top: 20px"> <span>` + comment + `</span> </div>`
+            cell += ` <div style="padding-top: 20px"> <span class="review-comment">` + comment + `</span> </div>`
         }
         
 
         if (username == localStorage.getItem('user_name')) {
             var modify_butttons = `<span class="modify-buttons"> 
-                <span> Edit </span>  
-                <span style="padding-left: 5px;"> Delete </span>
+                <a href="#" data-toggle="modal" data-target="#edit_review" onclick="edit_review(this)"> Edit </a>
+                <a href="#" onclick="delete_review(this)"style="padding-left: 5px;"> Delete </a>
                 </span>
             </div>` 
             cell+= modify_butttons;
@@ -230,7 +232,7 @@ function display_stars() {
             }
 
     }
-    overall_number = `<div id='average_overall_rating1' style="display: inline; font-size: 18px; padding-left: 10px;">`+ average_overall +`</div>`
+    overall_number = `<div id='average_overall_rating1' style="display: inline; font-size: 18px; padding-left: 10px;">`+ parseFloat(average_overall).toFixed(1) +`</div>`
     overall_ratings.insertAdjacentHTML('beforeend', overall_number)
     console.log(rating)
 }
@@ -375,4 +377,86 @@ function changeStarColour(num, classTarget, rating_class, class_names) {
             break;
     }
     console.log("overall " + user_overall + " food " + user_food + " service " + user_service + " value " + user_value)
+}
+
+function addNewReview() {
+
+    var review_object = new Object();
+    var recommend = document.getElementsByName('recommend');
+    var recommend_value;
+    for (var i = 0; i < recommend.length; i++) {
+        if (recommend[i].checked) {
+            recommend_value = recommend[i].value
+            break;
+            //console.log("recommend: " +recommend_value);
+        }
+    }
+    
+    review_object.user_id = localStorage.getItem('user_id');
+    review_object.restaurant_id = sessionStorage.getItem('restaurant_id');
+    var user_title = document.getElementById('user_title').value;
+    console.log("title: " +user_title)
+    var user_comment = document.getElementById('user_comment').value;
+    console.log("object: " + JSON.stringify(review_object))
+    if (typeof(user_overall) === 'undefined' || typeof(user_food) === 'undefined' || typeof(user_service) === 'undefined' || typeof(user_value) === 'undefined' || user_title == '' || typeof(recommend_value) === 'undefined' ) {
+        alert("Please fill in the fields!")
+        console.log('recc ' +  recommend_value)
+        return
+
+    }
+    review_object.review_title = review_title_value = user_title;
+    review_object.comment = user_comment;
+    review_object.overall_rating = user_overall;
+    review_object.food_rating = user_food;
+    review_object.value_rating = user_value;
+    review_object.service_rating = user_service;
+    review_object.will_recommend = recommend_value;
+    console.log("object: " + JSON.stringify(review_object))
+
+    var request = new XMLHttpRequest();
+    request.open('POST', '/reviews', true);
+    request.setRequestHeader("Content-type", "application/json");
+    request.onload = function() {
+            sessionStorage.setItem("total_reviews", parseInt(total_reviews) + 1)
+            location.reload();
+            
+            
+            
+    }
+    request.send(JSON.stringify(review_object));
+    
+
+}
+
+function edit_review(element) {
+    // TODO 
+    var parent = element.parentNode.parentNode;
+    var edit_title = parent.querySelector('h5').innerHTML;
+    console.log(parent)
+    var ratings_and_values = parent.querySelector('div').querySelectorAll('i');    
+    console.log(values)
+    
+   
+}
+
+
+
+function delete_review(element) {
+    var response = confirm("Are you sure you want to delete this comment?")
+    if (response === true) {
+        delete_object = new Object();
+        // get id of review
+        delete_object.review_id = element.parentNode.parentNode.id;
+    
+        var request = new XMLHttpRequest();
+        request.open('DELETE', '/reviews', true)
+        request.setRequestHeader("Content-type", "application/json");
+        request.onload = function() {
+                sessionStorage.setItem("total_reviews", parseInt(total_reviews) - 1)
+                location.reload();
+        }
+        request.send(JSON.stringify(delete_object));
+    }
+
+    
 }

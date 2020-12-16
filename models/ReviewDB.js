@@ -21,6 +21,7 @@ class reviewDB {
     }
 
     addReview(request, respond) {
+
         var now = new Date();
         var hour = now.getHours() % 12;
         var minute = now.getMinutes();
