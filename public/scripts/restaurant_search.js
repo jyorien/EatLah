@@ -15,7 +15,11 @@ function display() {
         document.getElementById('search_region').innerHTML = search_region;
         document.getElementById('select_region').value=search_region;
     }
+    if (search_results.length == 0) {
+        document.getElementById("result_text").innerHTML = "No results"
+    }
     
+    // append restaurant details
     var table = document.getElementById("result_list");
     table.innerHTML = "";
     for (var i = 0; i < search_results.length; i++) {
@@ -78,3 +82,49 @@ function getRestaurantInfo(element) {
     request.send();
 
     }
+
+function getRegionFilterRestaurants(region) {
+    var region_object = new Object();
+    var selected_cuisine = document.getElementById('select_cuisine').value;
+    region_object.region = region;
+    if (selected_cuisine != "") {
+        region_object.cuisine = selected_cuisine;
+    }
+
+    var request = new XMLHttpRequest();
+    var request_url = '/search-restaurants'
+    
+    request.open('POST', request_url)
+    request.setRequestHeader("Content-type", "application/json");
+    request.onload = function () {
+        sessionStorage.setItem('search_results', request.responseText);
+        sessionStorage.setItem('search_region', region);
+
+        window.location.href = 'search_results.html';
+            
+    }
+    request.send(JSON.stringify(region_object));
+        
+}
+
+function getCuisineFilterRestaurants(cuisine) {
+    var cuisine_object = new Object();
+    var selected_region = document.getElementById('select_region').value;
+    cuisine_object.cuisine = cuisine;
+    if (selected_region != "") {
+        cuisine_object.region = selected_region;
+    }
+    var request = new XMLHttpRequest();
+    var request_url = '/search-restaurants'
+
+    request.open('POST', request_url)
+    request.setRequestHeader("Content-type", "application/json");
+    request.onload = function () {
+        sessionStorage.setItem('search_results', request.responseText);
+        sessionStorage.setItem('search_cuisine', cuisine);
+        window.location.href = 'search_results.html';
+        
+    }
+    request.send(JSON.stringify(cuisine_object));
+
+}

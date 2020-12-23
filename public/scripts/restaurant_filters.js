@@ -1,6 +1,6 @@
 function getCuisineFilterResults(filter) {
-    var cusine_object = new Object();
-    cusine_object.cuisine = filter;
+    var cuisine_object = new Object();
+    cuisine_object.cuisine = filter;
     var request = new XMLHttpRequest();
     var request_url = '/search-restaurants'
 
@@ -13,7 +13,7 @@ function getCuisineFilterResults(filter) {
         window.location.href = 'search_results.html';
         
     }
-    request.send(JSON.stringify(cusine_object));
+    request.send(JSON.stringify(cuisine_object));
 
 }
 
