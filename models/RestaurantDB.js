@@ -98,6 +98,21 @@ class restaurantDB {
             ORDER BY avg(review.overall_rating) DESC`
             values = [search_query, region_query]
         }
+
+        // if there is region and cuisine search
+        else if (typeof(search_query) === 'undefined') {
+            cuisine_query = `${cuisine_query}`
+            region_query = `${region_query}`
+            
+            sql = `SELECT restaurant.*, region.region_name, cuisine.*, count(review.review_id) as total_reviews, avg(review.overall_rating) as average FROM eatlah_reviews.restaurant
+            INNER JOIN eatlah_reviews.region ON restaurant.region_id = region.region_id
+            INNER JOIN eatlah_reviews.cuisine ON restaurant.cuisine_id = cuisine.cuisine_id
+            INNER JOIN eatlah_reviews.review ON restaurant.restaurant_id = review.restaurant_id
+            WHERE region.region_name = ? AND cuisine.cuisine_name = ?
+            GROUP BY restaurant.restaurant_id
+            ORDER BY avg(review.overall_rating) DESC`
+            values = [region_query, cuisine_query]
+        }
         
         
         

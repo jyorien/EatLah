@@ -162,3 +162,41 @@ body {
 .test-class {
   background-color: green !important;
 }
+
+.menu { grid-area: menu;}
+.main { grid-area: main;}
+
+.grid-container {
+  display:grid;
+  grid-template-areas: "menu main main main main main main" "menu main main main main main main" "menu main main main main main main";
+
+}
+
+.search-img { 
+  margin-left: 10px;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  grid-area: image;
+  background-image: url("");
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
+.search-content { 
+  grid-area: content;
+
+  padding-left: 10px;
+}
+.result-box {
+  cursor: pointer;
+  display: grid;
+  grid-template-areas: "image image content content" ;
+  margin: 5% 10% 5% 10%;
+  border-style: solid;
+  border-color: #888888;
+  width: 650px;
+  height: 200px;
+}
+

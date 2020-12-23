@@ -138,7 +138,7 @@ function displayComments(number) {
 
         if (username == localStorage.getItem('user_name')) {
             var modify_butttons = `<span class="modify-buttons"> 
-                <a href="#" data-toggle="modal" data-target="#edit_review" onclick="edit_review(this)"> Edit </a>
+                <a href="#" data-toggle="modal" data-target="#edit_review" onclick="edit_review(this, `+ comments_array[i].review_id+`)"> Edit </a>
                 <a href="#" onclick="delete_review(this)"style="padding-left: 5px;"> Delete </a>
                 </span>
             </div>` 
@@ -428,9 +428,10 @@ function addNewReview() {
 
 }
 
-function edit_review(element) {
+function edit_review(element, review_id) {
     // TODO 
     var parent = element.parentNode.parentNode;
+    document.getElementById("user_title_update").value = review_id;
     var edit_title = parent.querySelector('h5').innerHTML;
     console.log(parent)
     var ratings_and_values = parent.querySelector('div').querySelectorAll('i');    

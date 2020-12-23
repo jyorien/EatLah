@@ -8,7 +8,9 @@ function getCuisineFilterResults(filter) {
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function () {
         sessionStorage.setItem('search_results', request.responseText);
-        window.location.href = 'search_results.html'
+        sessionStorage.setItem('search_cuisine', filter);
+        sessionStorage.removeItem('search_region');
+        window.location.href = 'search_results.html';
         
     }
     request.send(JSON.stringify(cusine_object));
@@ -25,6 +27,8 @@ function getRegionFilterResults(filter) {
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function () {
         sessionStorage.setItem('search_results', request.responseText);
+        sessionStorage.setItem('search_region', filter);
+        sessionStorage.removeItem('search_cuisine');
         window.location.href = 'search_results.html';
         
     }
