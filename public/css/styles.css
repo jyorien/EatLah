@@ -177,7 +177,7 @@ body {
   padding-top: 7px;
   padding-bottom: 10px;
   grid-area: image;
-  background-image: url("");
+
   width: 200px;
   height: 200px;
   object-fit: contain;

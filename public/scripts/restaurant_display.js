@@ -170,7 +170,6 @@ function load_sorted(type) {
 }
 
 function sort_reviews(type) {
-    console.log("wtf: " +type)
     if (type == 'highest') {
         comments_array.sort(function(a, b) {
             console.log(comments_array)

@@ -68,8 +68,13 @@ function getRestaurantInfo(element) {
         var search_object = new Object();
         search_object.text_search = document.getElementById('text_search').value; // string
         var select_search = document.getElementById('select_search').value; // region
+        // if region select is not empty
         if (select_search != 'region') {
             search_object.region = select_search;
+        }
+        else {
+            sessionStorage.removeItem("search_region");
+            sessionStorage.removeItem("search_cuisine");
         }
         
         var request_url = '/search-restaurants'
@@ -79,6 +84,7 @@ function getRestaurantInfo(element) {
         request.setRequestHeader("Content-type", "application/json");
         request.onload = function() {
             sessionStorage.setItem('search_results', request.responseText);
+            sessionStorage.setItem('search_text', search_object.text_search);
              window.location.href = 'search_results.html';
         }
         request.send(JSON.stringify(search_object))
