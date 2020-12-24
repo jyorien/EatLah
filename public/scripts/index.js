@@ -58,6 +58,7 @@ function getRestaurantInfo(element) {
         sessionStorage.setItem('average_service', info_array[0].average_service);
         sessionStorage.setItem('average_value', info_array[0].average_value);
         sessionStorage.setItem('total_reviews', info_array[0].total_reviews);
+        sessionStorage.setItem('image_url', info_array[0].image_url)
         console.log(sessionStorage.getItem('restaurant_name'));
         window.location.href = 'restaurant_display.html';
     }

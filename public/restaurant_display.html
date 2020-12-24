@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
     
 
     <!-- Required scripts -->
@@ -21,9 +24,10 @@
     <!-- Required files-->
     <div w3-include-html="top_navigation.html"></div>
     <div w3-include-html="login_modal.html"></div>
-    <img src="https://yoshinoya.com.sg/wp-content/uploads/2017/05/home-separator-image-736x414.jpg" style="padding: 0 5% 0 5%; display: block; margin-left: auto; margin-right: auto; width: 80%; height: 500px; object-fit: cover;">
+    <img id="res_image" src="https://www.hottomato.com.sg/wp-content/uploads/2019/05/homebanner6.jpg" style="padding: 0 5% 0 5%; display: block; margin-left: auto; margin-right: auto; width: 80%; height: 500px; object-fit: cover;">
+    
     <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 20px;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <div id="map" style="height:250px; width: 285px;"> </div>
         <div class="card-body">
           <h5 class="card-title">Address</h5>
           <p id="res_address"class="card-text"></p>
@@ -31,7 +35,7 @@
         </div>
     </div>
 
-    <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 310px;">
+    <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 425px;">
         <div class="card-body">
             <h5 class="card-title">Contact Details</h5>
             <p  class="card-text"> 
@@ -49,7 +53,7 @@
         </div>
     </div>
 
-    <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 470px;">
+    <div class="card" style="width: 18rem; position: absolute; margin-left: 910px; margin-top: 600px;">
         <div class="card-body">
             <h5 class="card-title">Operating Hours</h5>
             <p  id="res_hours"class="card-text" style="width: 190px">
@@ -319,6 +323,7 @@
 <script> retrieveComments()</script>
 <script> display_stars() </script>
 <script> set_button_attributes()</script>
+<script> geocode() </script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

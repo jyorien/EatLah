@@ -9,10 +9,11 @@ var user_overall;
 var user_food;
 var user_service;
 var user_value;
+var address;
 
 function retrieveInfo () {
     var name = sessionStorage.getItem('restaurant_name');
-    var address = sessionStorage.getItem('restaurant_address');
+    address = sessionStorage.getItem('restaurant_address');
     var description = sessionStorage.getItem('restaurant_description');
     
     console.log(description)
@@ -21,6 +22,7 @@ function retrieveInfo () {
     var operating_hours = sessionStorage.getItem('restaurant_hours');
     var cuisine = sessionStorage.getItem('restaurant_cuisine');
     var cuisine_color = sessionStorage.getItem('restaurant_cuisine_color');
+    var image_url = sessionStorage.getItem('image_url');
     average_overall = sessionStorage.getItem('average_overall');
     var average_food = parseFloat(sessionStorage.getItem('average_food')).toFixed(1);
     var average_service = parseFloat(sessionStorage.getItem('average_service')).toFixed(1);
@@ -42,6 +44,7 @@ function retrieveInfo () {
     document.getElementById('res_url').setAttribute("href", url)
     document.getElementById('res_url').setAttribute("target", "_blank")
     document.getElementById('res_hours').innerHTML = operating_hours;
+    document.getElementById('res_image').setAttribute('src',image_url)
 
     
     //document.getElementById('res_min').innerHTML = min_price;
@@ -539,3 +542,49 @@ function update_review() {
     }
 
 }
+
+
+var coordinates;
+// geocoding function
+function geocode() {
+    var location = address;
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+        params: {
+          address: location,
+          key: 'AIzaSyBkKFpDIZcEtgeEcoad8QUBZPDozuE8z8w'
+        }
+      })
+      .then(function(response) {
+        // Log full response
+        console.log(response)
+
+        // Formatted Address
+        coordinates = response.data.results[0].geometry.location;
+        console.log(coordinates)
+
+        var script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKFpDIZcEtgeEcoad8QUBZPDozuE8z8w&callback=initMap&libraries=&v=weekly'
+        script.setAttribute('defer', 'defer');
+        document.body.appendChild(script);
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+}
+
+function initMap() {
+    var options = {
+      zoom: 16,
+      center: coordinates
+    }
+
+    // init map
+    var map = new google.maps.Map(document.getElementById('map'), options);
+
+    // add marker
+    var marker = new google.maps.Marker({
+      position: coordinates,
+      map: map
+    })
+
+  } 
