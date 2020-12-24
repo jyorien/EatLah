@@ -14,7 +14,8 @@ class reviewDB {
                 throw error;
             }
             else {
-                respond.json(result)
+                respond.json(result);
+                console.log(sql);
 
             }
         });
@@ -57,6 +58,7 @@ class reviewDB {
             }
             else {
                 respond.json(result);
+                console.log(sql, values);
             }
         })
     }
@@ -74,6 +76,7 @@ class reviewDB {
             }
             else {
                 respond.json(result);
+                console.log(sql, values);
             }
 
         })
@@ -87,7 +90,8 @@ class reviewDB {
                 throw error;
             }
             else {
-                respond.json(result)
+                respond.json(result);
+                console.log(sql);
             }
         })
     }

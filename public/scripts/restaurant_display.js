@@ -19,8 +19,6 @@ function retrieveInfo () {
     var contact_number = sessionStorage.getItem('restaurant_number');
     var url = sessionStorage.getItem('restaurant_url');
     var operating_hours = sessionStorage.getItem('restaurant_hours');
-    var min_price = sessionStorage.getItem('restaurant_min');
-    var max_price = sessionStorage.getItem('restaurant_max');
     var cuisine = sessionStorage.getItem('restaurant_cuisine');
     var cuisine_color = sessionStorage.getItem('restaurant_cuisine_color');
     average_overall = sessionStorage.getItem('average_overall');
@@ -104,6 +102,8 @@ function displayComments(number) {
         var service_rating = comments_array[i].service_rating;
         var value_rating = comments_array[i].value_rating;
         var username = comments_array[i].username;
+        var will_recommend = comments_array[i].will_recommend
+
 
         // TODO: format the comments 
         var cell = `<div class="comment" id=`+review_id+`> 
@@ -129,8 +129,17 @@ function displayComments(number) {
 
             <i> Food </i> <i>`+ food_rating + `</i> 
             <i> Service </i> <i>` + service_rating + `</i> 
-            <i> Value </i> <i>`+ value_rating +` </i> 
-        </div>`
+            <i> Value </i> <i>`+ value_rating +` </i> `
+        if (will_recommend == 1) {
+            console.log("rec " + will_recommend)
+            cell += `<i class="fa fa-thumbs-o-up"> </i> </div>`
+        }
+
+        else {
+            console.log("rec " + will_recommend)
+            cell += `<i class="fa fa-thumbs-o-down"> </i> </div> `
+        }
+
         if (comment != null && comment != "") {
             cell += ` <div style="padding-top: 20px"> <span class="review-comment">` + comment + `</span> </div>`
         }
@@ -138,7 +147,7 @@ function displayComments(number) {
 
         if (username == localStorage.getItem('user_name')) {
             var modify_butttons = `<span class="modify-buttons"> 
-                <a href="#" data-toggle="modal" data-target="#edit_review" onclick="edit_review(this, `+ comments_array[i].review_id+`)"> Edit </a>
+                <a href="#" data-toggle="modal" data-target="#edit_review" onclick="edit_review(`+ i +`)"> Edit </a>
                 <a href="#" onclick="delete_review(this)"style="padding-left: 5px;"> Delete </a>
                 </span>
             </div>` 
@@ -378,7 +387,7 @@ function changeStarColour(num, classTarget, rating_class, class_names) {
     console.log("overall " + user_overall + " food " + user_food + " service " + user_service + " value " + user_value)
 }
 
-function addNewReview() {
+function add_review() {
 
     var review_object = new Object();
     var recommend = document.getElementsByName('recommend');
@@ -417,6 +426,7 @@ function addNewReview() {
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function() {
             sessionStorage.setItem("total_reviews", parseInt(total_reviews) + 1)
+            getRestaurantDetails()
             location.reload();
             
             
@@ -427,15 +437,48 @@ function addNewReview() {
 
 }
 
-function edit_review(element, review_id) {
+function getRestaurantDetails() {
+     var request = new XMLHttpRequest();
+     var url = `/restaurants/${sessionStorage.getItem('restaurant_id')}`;
+     request.open('GET', url, true);
+     request.onload = function() {
+        var info_array = JSON.parse(request.responseText);
+        sessionStorage.setItem('average_overall', info_array[0].average_overall);
+        sessionStorage.setItem('average_food', info_array[0].average_food);
+        sessionStorage.setItem('average_service', info_array[0].average_service);
+        sessionStorage.setItem('average_value', info_array[0].average_value);
+     }
+     request.send();
+}
+
+function edit_review(index) {
     // TODO 
-    var parent = element.parentNode.parentNode;
-    document.getElementById("user_title_update").value = review_id;
-    var edit_title = parent.querySelector('h5').innerHTML;
-    console.log(parent)
-    var ratings_and_values = parent.querySelector('div').querySelectorAll('i');    
-    console.log(values)
+    console.log(comments_array[index])
+    var edit_overall = document.getElementById("edit_overall");
+    var edit_food = document.getElementById("edit_food");
+    var edit_service = document.getElementById("edit_service");
+    var edit_value = document.getElementById("edit_value");
+    var edit_title = document.getElementById("user_title_update");
+    var edit_comment = document.getElementById("user_comment_update");
+    var edit_id = document.querySelector(".id_placeholder");
     
+    console.log("will recommend: " + comments_array[index].will_recommend)
+
+    edit_overall.value = comments_array[index].overall_rating;
+    edit_food.value = comments_array[index].food_rating;
+    edit_service.value = comments_array[index].service_rating;
+    edit_value.value = comments_array[index].value_rating;
+    edit_title.value = comments_array[index].review_title;
+    edit_comment.value = comments_array[index].comment;
+    edit_id.setAttribute("id", comments_array[index].review_id);
+
+    if (comments_array[index].will_recommend == 1 ) {
+        document.getElementById("btn-yes-update").click();
+    }
+    else {
+        document.getElementById("btn-no-update").click();
+    }
+
    
 }
 
@@ -453,10 +496,46 @@ function delete_review(element) {
         request.setRequestHeader("Content-type", "application/json");
         request.onload = function() {
                 sessionStorage.setItem("total_reviews", parseInt(total_reviews) - 1)
+                getRestaurantDetails();
                 location.reload();
         }
         request.send(JSON.stringify(delete_object));
     }
 
+}
+
+function update_review() {
     
+    var response = confirm("Are you sure you want to save changes?")
+    if (response === true) {
+        var recommend = document.getElementsByName('update_recommend');
+        var recommend_value;
+        for (var i = 0; i < recommend.length; i++) {
+            if (recommend[i].checked) {
+                recommend_value = recommend[i].value
+                break;
+            }
+        }
+
+
+        update_object = new Object();
+        update_object.review_id = document.querySelector(".id_placeholder").getAttribute('id');
+        update_object.overall_rating = document.getElementById("edit_overall").value;
+        update_object.food_rating = document.getElementById("edit_food").value;
+        update_object.service_rating = document.getElementById("edit_service").value;
+        update_object.value_rating = document.getElementById("edit_value").value;
+        update_object.review_title = document.getElementById("user_title_update").value;
+        update_object.comment = document.getElementById("user_comment_update").value;
+        update_object.will_recommend = recommend_value;
+        
+
+        var request = new XMLHttpRequest();
+        request.open('PUT', '/reviews', true)
+        request.setRequestHeader("Content-type", "application/json");
+        request.onload = function() {
+                location.reload();
+        }
+        request.send(JSON.stringify(update_object));
+    }
+
 }

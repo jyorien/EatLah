@@ -15,6 +15,7 @@ class restaurantDB {
                 }
                 else {
                     respond.json(result);
+                    console.log(sql);
                 }
         });
     }
@@ -31,6 +32,7 @@ class restaurantDB {
             }
             else {
                 respond.json(result);
+                console.log(sql);
             }
         });
     }
@@ -122,8 +124,8 @@ class restaurantDB {
                 throw error;
             }
             else {
-                respond.json(result)
-                console.log(sql,values)
+                respond.json(result);
+                console.log(sql,values);
             }
         })
         
