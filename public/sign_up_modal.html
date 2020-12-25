@@ -15,12 +15,12 @@
                 <div class="row">
                     <div class="col"> 
                     <label for="first_name" style="color: #707070;"> <b> First Name </b> </label><br>
-                    <input id="first_name"type="text">
+                    <input id="first_name"type="text" onkeyup="enableSignUp()">
                 </div>
 
                 <div class="col">
                     <label for="last_name" style="color: #707070;"> <b> Last Name </b> </label><br>
-                    <input id="last_name"type="text">
+                    <input id="last_name"type="text" onkeyup="enableSignUp()">
                 </div>
                 </div>
 
@@ -28,12 +28,12 @@
                 <div class="row">
                     <div class="col">
                         <label for="new_username" style="color: #707070;"> <b> Username </b> </label><br>
-                        <input id="new_username" type="text">
+                        <input id="new_username" type="text" onkeyup="enableSignUp()">
                     </div>
 
                     <div class="col">
                         <label for="gender" style="color: #707070;"> <b> Gender </b> </label><br>
-                        <select id="gender" name="gender" style="width: 91%;">
+                        <select id="gender" name="gender" style="width: 91%;" onchange="enableSignUp()">
                             <option disabled selected value style="display: none;"> </option>
                             <option value="Male"> Male </option>  
                             <option value="Female"> Female </option>
@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col"> 
                         <label for="new_address" style="color: #707070;"> <b> Address </b> </label><br>
-                        <input id="new_address" type="text" style="width:417px;">
+                        <input id="new_address" type="text" style="width:417px;" placeholder="Optional field">
                     </div>
                 </div>
 
@@ -53,12 +53,12 @@
                 <div class="row">
                     <div class="col">
                         <label for="new_email" style="color: #707070;"> <b> Email </b> </label><br>
-                        <input id="new_email"type="email">
+                        <input id="new_email"type="email" onkeyup="enableSignUp()">
                     </div>
 
                     <div class="col">
                         <label for="mobile_number" style="color: #707070;"> <b> Mobile Number </b> </label><br>
-                        <input id="mobile_number"type="text">
+                        <input id="mobile_number"type="text" placeholder="Optional field">
 
                     </div>
                 </div>
@@ -67,17 +67,17 @@
                 <div class="row"> 
                     <div class="col">
                         <label for="new_password" style="color: #707070;"> <b> Password </b> </label><br>
-                        <input id="new_password"type="password">
+                        <input id="new_password" type="password" onkeyup="enableSignUp()">
                     </div>
 
                     <div class="col">
                         <label for="confirm_password" style="color: #707070;"> <b> Confirm Password </b> </label><br>
-                        <input id="confirm_password" type="password">
+                        <input id="confirm_password" type="password" onkeyup="enableSignUp()">
                     </div>
                 </div>
                 <br>
                 <div class="row justify-content-center">
-                    <button type="button" id="btnSignUp" onclick="signUp()" class="btn btn-primary" style="padding: 4px 70px 4px 70px; background-color: #ec6838; border: #5f5f5f;color:#ffffff; margin-bottom: 20px;">Sign Up </button>
+                    <button type="button" id="btnSignUp" onclick="signUp()" class="btn btn-primary" style="padding: 4px 70px 4px 70px; background-color: #ec6838; border: #5f5f5f;color:#ffffff; margin-bottom: 20px;" disabled>Sign Up </button>
                 </div>
                 <div class="row justify-content-center">
                     <a href="#" data-toggle="modal" data-target="#login_modal" data-dismiss="modal"> Have an account? Log in here </a>
