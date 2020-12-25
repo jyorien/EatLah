@@ -1,14 +1,17 @@
+const { response } = require("express");
+const { request } = require("http");
+
 function login() {
     var message="";
     var credentials = new Object();
-    credentials.username = document.getElementById('username').value;
+    credentials.username = document.getElementById('username').value.toLowerCase();
     credentials.password = document.getElementById('password').value;
     var request = new XMLHttpRequest();
 
     request.open("POST", "/login", true);
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function() {
-        response = JSON.parse(request.responseText);
+        var response = JSON.parse(request.responseText);
         console.log(response);
         document.getElementById("loginForm").reset();
         if (response[1] == credentials.username) {
@@ -26,7 +29,72 @@ function login() {
 }
 
 function signUp() {
+    var request = new XMLHttpRequest();
     // FN,LN - 45, username - 16, pass - min 8, email - 128
+    var new_username = document.getElementById("new_username").value;
+
+
+    // Check whether username exists in database
+    var url = `/sign-up/${new_username}`
+
+    request.open("GET", url, true);
+    request.setRequestHeader("Content-type", "application/json");
+    request.onload = function() {
+        
+        var response = JSON.parse(request.responseText)
+        if (response.message == 1) {
+            // if username doesn't exist, add new user
+            addNewAccount();
+
+        }
+        else {
+            alert(response.message);
+            return
+        }
+    }
+    request.send()
+
+}
+
+function addNewAccount() {
+    var request = new XMLHttpRequest();
+    var new_first_name = document.getElementById("first_name").value;
+    var new_last_name = document.getElementById("last_name").value;
+    var new_username = document.getElementById("new_username").value.toLowerCase();
+    var new_gender = document.getElementById("gender").value;
+    var new_address = document.getElementById("new_address").value;
+    var new_email = document.getElementById("new_email").value;
+    var new_mobile = document.getElementById("mobile_number").value;
+    var new_password = document.getElementById("new_password").value;
+    var new_password_confirm = document.getElementById("confirm_password").value;
+    console.log(`first name: ${new_first_name}
+    last name: ${new_last_name}
+    username: ${new_username}
+    gender: ${new_gender}
+    address: ${new_address}
+    email: ${new_email}
+    mobile: ${new_mobile}
+    pass: ${new_password}
+    new pass: ${new_password_confirm}`)
+
+    var user = new Object();
+    user.first_name = new_first_name;
+    user.last_name = new_last_name;
+    user.username = new_username;
+    user.gender = new_gender;
+    user.address = new_address;
+    user.email = new_email;
+    user.mobile_number = new_mobile;
+    user.password = new_password;
+
+    request.open("POST","/sign-up",true)
+    request.setRequestHeader("Content-type", "application/json");
+    request.onload = function () {
+        alert("Sign up success! You can now log into your new account.")
+        location.reload();
+
+    }
+    request.send(JSON.stringify(user))
 }
 
 function welcome() {

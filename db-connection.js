@@ -4,6 +4,6 @@ var connection = mysql.createPool({
     port: '3304',
     user: 'root',
     password: '',
-    database: 'eatlah_reviews'
+    database: 'eatlah_reviews',
 });
 module.exports = connection;
