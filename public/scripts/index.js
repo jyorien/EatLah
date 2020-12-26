@@ -28,7 +28,7 @@ function displayRestaurants() {
                     '<h5 class="card-title" style="overflow:hidden; text-overflow: ellipsis; word-wrap: brea-word; display:block; line-height: 1em; max-height: 1em;">' + restaurant_name +'</h5>' +
                     '<span>' + average_rating + ' <i class="fa fa-star" style="color:#E7567C;"></i></span>' +
                     '<span class="badge badge-secondary float-right" style="background-color:' + cuisine_color +';">' + cuisine_name +'</span>'+
-                    '</div> </div> </div>'
+                    '</div> </div> </div>';
         table.insertAdjacentHTML('beforeend', cell); 
     }
 
@@ -39,7 +39,7 @@ function getRestaurantInfo(element) {
     var request_url = '/restaurants/'+id;
     console.log(request_url);
     var request = new XMLHttpRequest();
-    request.open('GET', request_url, true) 
+    request.open('GET', request_url, true); 
     request.onload = function () {
         info_array = JSON.parse(request.responseText);
         sessionStorage.setItem('restaurant_id', info_array[0].restaurant_id);
@@ -78,7 +78,7 @@ function getRestaurantInfo(element) {
             sessionStorage.removeItem("search_cuisine");
         }
         
-        var request_url = '/search-restaurants'
+        var request_url = '/search-restaurants';
         var request = new XMLHttpRequest();
 
         request.open('POST', request_url, true);
@@ -88,8 +88,18 @@ function getRestaurantInfo(element) {
             sessionStorage.setItem('search_text', search_object.text_search);
              window.location.href = 'search_results.html';
         }
-        request.send(JSON.stringify(search_object))
+        request.send(JSON.stringify(search_object));
         
+    }
 
+    function getSearchResultsOnEnter() {
+        var text_search = document.getElementById("text_search");
+    
 
+        text_search.addEventListener("keyup", function(event) {
+
+            if (event.key === "Enter") {
+                getSearchResults();
+            }   
+        })
     }

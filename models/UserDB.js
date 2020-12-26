@@ -10,7 +10,7 @@ class userDB{
        console.log(username,password);
        var msg = "";
 
-       var sql = "SELECT password, user_id, username FROM user WHERE username = ?";
+       var sql = "SELECT password, user_id, username, user_image FROM user WHERE username = ?";
 
         db.query(sql, [username], function(error, result) {
             if(error){
@@ -21,7 +21,8 @@ class userDB{
                     if(password == result[0].password){
                         msg = "1";
                         console.log(msg);
-                        respond.json([result[0].user_id, result[0].username]);
+                        result[0].user_image = Buffer.from(result[0].user_image,'base64').toString('ascii');
+                        respond.json([result[0].user_id, result[0].username, result[0].user_image]);
                     }
                     else{
                         msg = "FAIL!";
@@ -41,7 +42,7 @@ class userDB{
           });
     }
 
-    addNewAccount(request, respond) {
+    addNewUser(request, respond) {
         console.log(request.body)
         var first_name = request.body.first_name;
         var last_name = request.body.last_name;
@@ -108,6 +109,58 @@ class userDB{
             }
           });
     }
+
+    updateUserDetails(request, respond) {
+        var user_id = request.params.id;
+        var first_name = request.body.first_name;
+        var last_name = request.body.last_name;
+        var gender = request.body.gender;
+        var address = request.body.address;
+        var email = request.body.email;
+        var mobile_number = request.body.mobile_number;
+        var file_base64 = request.body.file;
+        var sql;
+        var values;
+
+        if (file_base64 !== undefined && file_base64 != "") {
+           sql = "UPDATE user SET user_image = ? WHERE user_id = ?"
+            values = [file_base64, user_id]
+            
+        }
+        else {
+
+        sql = "UPDATE user SET first_name = ?, last_name = ?, email = ?, address = ?, gender = ?, mobile_number = ? WHERE user_id = ?"
+        values = [first_name, last_name, email, address, gender, mobile_number, user_id]
+        }
+        db.query(sql, values, function(error, result) {
+            if (error) {
+                throw error;
+            }
+            else {
+                respond.json(result);
+            }
+        }) 
+        console.log(sql, values)
+        
+    }
+
+    getUserInfo(request, respond) {
+        var user_id = request.params.id;
+        var sql = "SELECT * FROM user WHERE user_id = ?";
+        db.query(sql, user_id, function(error, result) {
+            if (error) {
+                throw error;
+            }
+            else {
+                //console.log(Buffer.from(result[0].user_image,'base64').toString('ascii'));
+                result[0].user_image = Buffer.from(result[0].user_image,'base64').toString('ascii');
+                respond.json(result);
+            }
+        })
+        
+    }
+
+
     
 
 }

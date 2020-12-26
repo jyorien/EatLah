@@ -16,8 +16,10 @@ function login() {
         document.getElementById("loginForm").reset();
         if (response[1] == credentials.username) {
             location.reload();
-            localStorage.setItem('user_name', credentials.username);
             localStorage.setItem('user_id', response[0]);
+            localStorage.setItem('user_name', response[1]);
+            localStorage.setItem('user_image', response[2])
+            
         }
         else {
             document.getElementById("message").textContent = response.message;
@@ -156,10 +158,16 @@ function welcome() {
     var navElement;
     if ("user_name" in localStorage) {
 
-        navElement = '<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown"> </a> <div class="dropdown-menu"><a class="dropdown-item" href="#">Link 1</a><a class="dropdown-item" href="#">Link 2</a> <a class="dropdown-item" onclick="localStorage.clear(); location.reload();" href="#">Logout</a> </div>'
+        navElement = `<li class="nav-item dropdown"> 
+        <img src="#" class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown" style="width:70px; border-radius:50%;"> 
+         
+        <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#" onclick="goToProfileFavourites()"> Profile </a><a class="dropdown-item" href="#" onclick="goToProfileFavourites()"> Favourites </a> 
+        <a class="dropdown-item" onclick="localStorage.clear(); location.reload();" href="#">Logout</a>
+         </div>`
         document.getElementById('topRightNavbar').insertAdjacentHTML("afterbegin",navElement); 
 
-        document.getElementById('profileDrop').textContent = localStorage.getItem('user_name');
+        document.getElementById('profileDrop').src = localStorage.getItem('user_image');
     }
     else {
         navElement = '<li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#login_modal" href="#">Login </a> </li>'
@@ -168,6 +176,8 @@ function welcome() {
         
     }
     
-    
-    
+}
+
+function goToProfileFavourites() {
+    window.location.href="profile.html"
 }

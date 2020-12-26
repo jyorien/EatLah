@@ -33,11 +33,18 @@ body {
 .featured-box{
     padding: 2% 5% 0 5%;
     padding-bottom: 2%;
-    margin: 0 15% 0 15%;
+  
     background-color: white;
     border: 1px solid;
     box-shadow: 0px 0px 3px #888888;
 }
+
+.tab { 
+  background-color: white;
+  border: 1px solid;
+  box-shadow: 0px 0px 3px #888888;
+}
+   
 
 /* card image dimensions */
 .card-img-top {

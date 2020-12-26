@@ -8,8 +8,11 @@ function routeUsers(app) {
     app.route('/login')
         .post(userDBObject.getLoginCredentials);
     app.route('/sign-up')
-        .post(userDBObject.addNewAccount)
+        .post(userDBObject.addNewUser)
     app.route('/sign-up/:username')
         .get(userDBObject.getUsername)
+    app.route('/user/:id')
+        .put(userDBObject.updateUserDetails)
+        .get(userDBObject.getUserInfo)
 }
 module.exports = {routeUsers};
