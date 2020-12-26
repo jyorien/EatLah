@@ -1,6 +1,7 @@
 function getFeaturedRestaurantData() {
     var request = new XMLHttpRequest();
     request.open('GET', '/featured-restaurants')
+
     request.onload = function () {
         restaurant_array = JSON.parse(request.responseText);
         //console.log(request.responseText);
@@ -40,6 +41,7 @@ function getRestaurantInfo(element) {
     console.log(request_url);
     var request = new XMLHttpRequest();
     request.open('GET', request_url, true); 
+
     request.onload = function () {
         info_array = JSON.parse(request.responseText);
         sessionStorage.setItem('restaurant_id', info_array[0].restaurant_id);

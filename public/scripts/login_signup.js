@@ -68,10 +68,14 @@ function signUp() {
     }
 
     // check if mobile number is numeric
-    const regex_num = /^\d+$/;
-    if (regex_num.test(new_mobile) == false) {
-        alert("Your mobile number should only have digits!")
+    if (new_mobile != "" && new_mobile != null) {
+        const regex_num = /^\d+$/;
+        if (regex_num.test(new_mobile) === false) {
+            alert("Your mobile number should only have digits!")
+            return
+        }
     }
+
     
     // Check if username exists in database
     var url = `/sign-up/${new_username}`
@@ -159,15 +163,18 @@ function welcome() {
     if ("user_name" in localStorage) {
 
         navElement = `<li class="nav-item dropdown"> 
-        <img src="#" class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown" style="width:70px; border-radius:50%;"> 
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown" style="width:65px; border-radius:50%;"> 
          
         <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item" href="#" onclick="goToProfileFavourites()"> Profile </a><a class="dropdown-item" href="#" onclick="goToProfileFavourites()"> Favourites </a> 
-        <a class="dropdown-item" onclick="localStorage.clear(); location.reload();" href="#">Logout</a>
+        <a class="dropdown-item" onclick="logOut()" href="#">Logout</a>
          </div>`
         document.getElementById('topRightNavbar').insertAdjacentHTML("afterbegin",navElement); 
 
-        document.getElementById('profileDrop').src = localStorage.getItem('user_image');
+        if ( localStorage.getItem('user_image') !== 'null' ) {
+            document.getElementById('profileDrop').src = localStorage.getItem('user_image');
+        }
+            
     }
     else {
         navElement = '<li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#login_modal" href="#">Login </a> </li>'
@@ -180,4 +187,9 @@ function welcome() {
 
 function goToProfileFavourites() {
     window.location.href="profile.html"
+}
+
+function logOut() {
+    localStorage.clear(); 
+    window.location.href = 'index.html';
 }

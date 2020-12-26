@@ -14,5 +14,6 @@ function routeUsers(app) {
     app.route('/user/:id')
         .put(userDBObject.updateUserDetails)
         .get(userDBObject.getUserInfo)
+        .delete(userDBObject.deleteUser)
 }
 module.exports = {routeUsers};

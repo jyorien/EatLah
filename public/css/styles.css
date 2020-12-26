@@ -207,3 +207,13 @@ body {
   height: 200px;
 }
 
+.profile-border {
+  border-style: solid; 
+  border-top: none;
+  border-left: none; 
+  border-right: none; 
+  border-color: #707070; 
+  border-width: 1px;
+  padding-bottom: 5%;
+}
+

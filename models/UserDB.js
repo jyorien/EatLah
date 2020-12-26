@@ -21,7 +21,10 @@ class userDB{
                     if(password == result[0].password){
                         msg = "1";
                         console.log(msg);
-                        result[0].user_image = Buffer.from(result[0].user_image,'base64').toString('ascii');
+                        if (result[0].user_image !== 'null' && result[0].user_image != undefined && result[0].user_image != "") {
+                            result[0].user_image = Buffer.from(result[0].user_image,'base64').toString('ascii');
+                        }
+                            
                         respond.json([result[0].user_id, result[0].username, result[0].user_image]);
                     }
                     else{
@@ -119,6 +122,7 @@ class userDB{
         var email = request.body.email;
         var mobile_number = request.body.mobile_number;
         var file_base64 = request.body.file;
+        var password = request.body.password
         var sql;
         var values;
 
@@ -126,6 +130,10 @@ class userDB{
            sql = "UPDATE user SET user_image = ? WHERE user_id = ?"
             values = [file_base64, user_id]
             
+        }
+        else if (password !== undefined && password != "") {
+            sql = "UPDATE user SET password = ? WHERE user_id = ?"
+            values = [password, user_id]
         }
         else {
 
@@ -153,11 +161,27 @@ class userDB{
             }
             else {
                 //console.log(Buffer.from(result[0].user_image,'base64').toString('ascii'));
-                result[0].user_image = Buffer.from(result[0].user_image,'base64').toString('ascii');
+                if (result[0].user_image !== 'null' && result[0].user_image != undefined && result[0].user_image != "") {
+                    result[0].user_image = Buffer.from(result[0].user_image,'base64').toString('ascii');
+                }
+                
                 respond.json(result);
             }
         })
         
+    }
+
+    deleteUser(request, respond) {
+        var user_id = request.params.id;
+        var sql = "DELETE from USER WHERE user_id = ?";
+        db.query(sql, user_id, function(error,result) {
+            if (error) {
+                throw error;
+            }
+            else {
+                respond.json(result);
+            }
+        })
     }
 
 

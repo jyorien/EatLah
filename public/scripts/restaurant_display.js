@@ -488,17 +488,17 @@ function edit_review(index) {
 
 
 function delete_review(element) {
-    var response = confirm("Are you sure you want to delete this comment?")
+    var response = confirm("Are you sure you want to delete this comment?");
     if (response === true) {
         delete_object = new Object();
         // get id of review
         delete_object.review_id = element.parentNode.parentNode.id;
     
         var request = new XMLHttpRequest();
-        request.open('DELETE', '/reviews', true)
+        request.open('DELETE', '/reviews', true);
         request.setRequestHeader("Content-type", "application/json");
         request.onload = function() {
-                sessionStorage.setItem("total_reviews", parseInt(total_reviews) - 1)
+                sessionStorage.setItem("total_reviews", parseInt(total_reviews) - 1);
                 getRestaurantDetails();
                 location.reload();
         }

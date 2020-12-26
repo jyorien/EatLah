@@ -37,23 +37,108 @@
         <div id="tab_profile" class="container featured-box tab-content" style=" display: block"> 
                 <!-- Basic Info -->
                 <h3> Basic Information </h3>
-                <div class="row"> 
-                    <div class="col-4" style="background-color: bisque; text-align: center;">
+                <div class="row profile-border"> 
+                    <div class="col-4" style="text-align: center;">
                     <img id="profile_image" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" style="border-radius: 50%; object-fit: cover; width: 300px; height: 300px;">
                     <input id="file_input" type="file" accept="image/*" style="margin-top: 20px; text-align: center;"> 
                 </div>
-                    <div class="col-8" style="background-color: aquamarine;">  h</div>
+                    <div class="container col-8">  
+                        <!-- FN, LN -->
+                        <div class="row"> 
+                            <div class="col">
+                                <label for="user_fn">First Name</label><br>
+                                <input id="user_fn" type="text" style="width: 100%;">
+                            </div> 
+
+                            <div class="col">
+                                <label for="user_ln">Last Name</label><br>
+                                <input id="user_ln" type="text" style="width: 100%;">
+                            </div> 
+                        </div>
+                        <!-- Username, Gender -->
+                        <div class="row"> 
+                            <div class="col">
+                                <label for="user_un">Username</label><br>
+                                <input id="user_un" type="text" style="width: 100%;" disabled>
+                            </div> 
+
+                            <div class="col">
+                                <label for="user_gender">Gender</label><br>
+                                <select id="user_gender" style="width: 100%;"> 
+                                    <option disabled selected value style="display: none;"> </option>
+                                    <option value="Male"> Male </option>  
+                                    <option value="Female"> Female </option>
+                                    <option value="Others"> Others </option>
+
+                                </select> 
+                            </div> 
+
+                        </div>
+                        <!-- Address -->
+                        <div class="row" style="padding-left: 2.5%; padding-right: 2.5%;"> 
+                            <label for="user_address">Address</label><br>
+                            <input id="user_address" type="text" style="width: 100%;">
+                        </div>
+                        <!-- Email, Mobile Number -->
+                        <div class="row"> 
+                            <div class="col">
+                                <label for="user_email">Email</label><br>
+                                <input id="user_email" type="email" style="width: 100%;">
+                            </div> 
+
+                            <div class="col">
+                                <label for="user_number">Mobile Number</label><br>
+                                <input id="user_number" type="text" style="width: 100%;">
+                            </div> 
+                        </div>
+                        <br><br><br>
+                        <button id="btn_details" class="btn btn-danger" style="background-color: #E2757F; border-color: #707070; float: right;" onclick="updateUserDetails()"> Save Changes </button>
+                    
+                    </div>
                 </div>
 
                 <!-- Password Reset -->
-                <div class="row"> 
+                <h3 style="padding-top: 2%;"> Password </h3>
+                <div class="row profile-border">
+                    <div class="col"> 
+                        <div class="row"> 
+                            <div class="col">
+                                <label for="user_password_current">Password</label><br>
+                                <input id="user_password_current" type="password" style="width: 50%;">
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col">
+                                <label for="user_password_new">New Password</label><br>
+                                <input id="user_password_new" type="password" style="width: 50%;">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="user_password_confirm">Confirm Password</label><br>
+                                <input id="user_password_confirm" type="password" style="width: 50%;">
+                            </div>
+                        </div>
+                        <br><br>
+                        <button id="btn_password" class="btn btn-danger" style="background-color: #E2757F; border-color: #707070; float: right;" onclick="updatePassword()"> Change Password </button>
+        
                 </div>
-
+                </div>
+                
+               
                 <!-- Delete Account -->
+                <h3 style="padding-top: 2%;"> Delete Account </h3>
                 <div class="row"> 
-
+                    <div class="col"> 
+                        <label for="user_password_delete">Enter your password to delete this account.</label><br>
+                        <input id="user_password_delete" type="password" style="width: 50%;">
+                        <br><br>
+                        <button id="btn_delete" class="btn btn-danger" style="background-color: #E2757F; border-color: #707070; float: right;" onclick="deleteAccount()"> Delete Account </button>
+                    </div>
                 </div>
+                
 
         </div>
 
