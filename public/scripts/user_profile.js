@@ -104,7 +104,8 @@ file_input.addEventListener('change', function(event) {
     reader.addEventListener('load', function(event) {
         image.src = event.target.result;
         file_base64 = event.target.result;
-        localStorage.setItem("user_image",file_base64)
+
+    
         updateUserImage(file_base64);
     });
     reader.readAsDataURL(file)
@@ -120,7 +121,7 @@ function updateUserImage(image) {
     request.open("PUT", url, true);
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function() {
-        
+        localStorage.setItem("user_image",image)
         location.reload();
     }
     request.send(JSON.stringify(image_object));

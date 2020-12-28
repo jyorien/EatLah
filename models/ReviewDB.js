@@ -6,7 +6,7 @@ const Review = require('../models/Review');
 class reviewDB {
     getReviews(request, respond) {
         // order by newest reviews
-        var sql = "SELECT review.*, user.username FROM review INNER JOIN user on review.user_id = user.user_id WHERE restaurant_id = ? ORDER BY review_id DESC"
+        var sql = "SELECT review.*, user.username, user.user_image FROM review INNER JOIN user on review.user_id = user.user_id WHERE restaurant_id = ? ORDER BY review_id DESC"
         var id = request.params.id;
 
         db.query(sql, id, function(error, result) {
@@ -14,6 +14,12 @@ class reviewDB {
                 throw error;
             }
             else {
+                for (var i=0; i < result.length; i++) {
+                    if (result[i].user_image !== 'null' && result[i].user_image != undefined && result[i].user_image != "") {
+                        result[i].user_image = Buffer.from(result[i].user_image,'base64').toString('ascii');
+                    }
+                }
+
                 respond.json(result);
                 console.log(sql);
 

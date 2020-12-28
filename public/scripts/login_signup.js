@@ -61,7 +61,7 @@ function signUp() {
         return
     }
 
-    // check if username has > 16 characters
+    // check if username has < 16 characters
     if (new_username.length > 16) {
         alert("Username must have 16 or less characters!")
         return;
@@ -95,7 +95,6 @@ function signUp() {
         if (response.message == 1) {
             // if username doesn't exist, add new user
             addNewAccount();
-
         }
         else {
             // if username exists, exit function
@@ -165,12 +164,12 @@ function enableSignUp() {
 
 
 function welcome() {
-
+    console.log("nav " + document.getElementById('topRightNavbar'))
     var navElement;
     if ("user_name" in localStorage) {
 
         navElement = `<li class="nav-item dropdown"> 
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown" style="width:65px; border-radius:50%;"> 
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown" style="width:65px; height: 65px; border-radius:50%; object-fit: cover;"> 
          
         <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item" href="#" id="profile" onclick="goToProfileFavourites(this.id)"> Profile </a><a class="dropdown-item" id="favourites" href="#" onclick="goToProfileFavourites()"> Favourites </a> 
@@ -178,7 +177,7 @@ function welcome() {
          </div>`
         document.getElementById('topRightNavbar').insertAdjacentHTML("afterbegin",navElement); 
 
-        if ( localStorage.getItem('user_image') !== 'null' ) {
+        if (localStorage.getItem('user_image') !== 'null' ) {
             document.getElementById('profileDrop').src = localStorage.getItem('user_image');
         }
             

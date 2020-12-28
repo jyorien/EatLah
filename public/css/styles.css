@@ -23,10 +23,10 @@ body {
 }
 .search-inputs {
     text-align: center;
-    background-image: url("../images/seach-bg-1.jpg");
-    background-size: auto;
-    background-size: cover;
-    padding: 50px;
+    background-image: url("../images/search-bg-4.jpg");
+    background-size: contain;
+  /* top right btm left */
+    padding: 100px 50px 100px 50px;
 }
 
 /* white box for featured section */
@@ -147,7 +147,7 @@ body {
   }
   
   .modify-buttons {
-    padding-left: 500px;
+    padding-left: 350px;
 
   }
 

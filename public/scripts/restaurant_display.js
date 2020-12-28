@@ -46,9 +46,7 @@ function retrieveInfo () {
     document.getElementById('res_hours').innerHTML = operating_hours;
     document.getElementById('res_image').setAttribute('src',image_url)
 
-    
-    //document.getElementById('res_min').innerHTML = min_price;
-    //document.getElementById('res_max').innerHTML = max_price;
+
     
     
 }
@@ -56,7 +54,6 @@ function retrieveInfo () {
 
 function retrieveComments() {
     var request = new XMLHttpRequest();
-
     var id = sessionStorage.getItem('restaurant_id');
     var request_url = '/reviews/'+id;
 
@@ -105,16 +102,36 @@ function displayComments(number) {
         var service_rating = comments_array[i].service_rating;
         var value_rating = comments_array[i].value_rating;
         var username = comments_array[i].username;
-        var will_recommend = comments_array[i].will_recommend
+        var will_recommend = comments_array[i].will_recommend;
+        var user_image = comments_array[i].user_image;
+        if (typeof(user_image) == 'object') {
+            user_image = 'images/avatar.png'
+        }
+        
+    
 
 
         // TODO: format the comments 
-        var cell = `<div class="comment" id=`+review_id+`> 
-        <h5 style="display:inline-block; width: 300px; max-width: 300px;">`+ review_title +`</h5>
-        <span style="display: inline-block; padding-bottom: 10px; width:100px; max-width:100px;">`+ username +`</span>
-        <span style="display: inline-block; padding-left: 30px;">` + date_posted + `</span>
+        var cell = `<div class="comment row" id=${review_id}> 
+        <div class="col-2" style="text-align: center; padding-top: 10px">
+        <img src="${user_image}" style="border-radius: 50%; width: 60px; max-width:60px; object-fit: cover;">
+        <span style="padding-bottom: 10px; width:230px; max-width: 230px;"> ${username} </span><br>`
+        if (will_recommend == 1) {
+            console.log("rec " + will_recommend)
+            cell += `<i class="fa fa-thumbs-o-up"> </i>`
+        }
 
-        <span id="star_`+review_id +`"style="display: block">`
+        else {
+            console.log("rec " + will_recommend)
+            cell += `<i class="fa fa-thumbs-o-down"> </i>`
+        }
+        cell+=`</div>
+
+        <div class="col-10">
+        <h5 style="display:inline-block; width: 300px; max-width: 300px;"> ${review_title} </h5>
+        <span style="display: inline-block; padding-left: 20px;"> ${date_posted} </span>
+
+        <span id="star_${review_id}"style="display: block">`
 
         for (var j = 0; j < overall_rating; j++ ) {
             var star = `<i class="pink-star fa fa-star" ></i>`;
@@ -133,15 +150,6 @@ function displayComments(number) {
             <i> Food </i> <i>`+ food_rating + `</i> 
             <i> Service </i> <i>` + service_rating + `</i> 
             <i> Value </i> <i>`+ value_rating +` </i> `
-        if (will_recommend == 1) {
-            console.log("rec " + will_recommend)
-            cell += `<i class="fa fa-thumbs-o-up"> </i> </div>`
-        }
-
-        else {
-            console.log("rec " + will_recommend)
-            cell += `<i class="fa fa-thumbs-o-down"> </i> </div> `
-        }
 
         if (comment != null && comment != "") {
             cell += ` <div style="padding-top: 20px"> <span class="review-comment">` + comment + `</span> </div>`
@@ -158,7 +166,7 @@ function displayComments(number) {
 
         }
         else {
-            var div = `</div>`
+            var div = `</div> </div>`
             cell += div;
         }
 
