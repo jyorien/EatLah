@@ -194,7 +194,7 @@ function updatePassword() {
         // check if current password entered is correct
         if (user_password_current === user_password) {
             // check if password is > 8 characters long
-            if (user_password_new.length > 8) {
+            if (user_password_new.length >= 8) {
                 // check if new password matches
                 if (user_password_new === user_password_confirm) {
                     // check for user confirmation
@@ -254,6 +254,9 @@ function deleteAccount() {
         } 
 
         
+    }
+    else {
+        alert("Your password is wrong!")
     }
 }
 
