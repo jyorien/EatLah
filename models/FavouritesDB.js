@@ -22,8 +22,9 @@ class favouritesDB {
     getUserFavourites(request, respond) {
         var user_id = request.params.id;
 
-        var sql = `SELECT restaurant.* FROM favourite
+        var sql = `SELECT restaurant.*, cuisine.cuisine_name, cuisine.cuisine_color FROM favourite
             INNER JOIN restaurant ON favourite.restaurant_id = restaurant.restaurant_id
+            INNER JOIN cuisine ON restaurant.cuisine_id = cuisine.cuisine_id 
             WHERE user_id = ?`;
 
         db.query(sql, user_id, function(error, result) {

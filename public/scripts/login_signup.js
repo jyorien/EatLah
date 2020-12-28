@@ -54,6 +54,13 @@ function signUp() {
         return;
     }
 
+    // check if name is valid 
+    const regex_name = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    if (regex_name.test(new_first_name) === false || regex_name.test(new_last_name) === false) {
+        alert("Your first and last names should only contain alphabets!");
+        return
+    }
+
     // check if username has > 16 characters
     if (new_username.length > 16) {
         alert("Username must have 16 or less characters!")
@@ -166,7 +173,7 @@ function welcome() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="nav-link dropdown-toggle" href="#" id="profileDrop" data-toggle="dropdown" style="width:65px; border-radius:50%;"> 
          
         <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="#" onclick="goToProfileFavourites()"> Profile </a><a class="dropdown-item" href="#" onclick="goToProfileFavourites()"> Favourites </a> 
+        <a class="dropdown-item" href="#" id="profile" onclick="goToProfileFavourites(this.id)"> Profile </a><a class="dropdown-item" id="favourites" href="#" onclick="goToProfileFavourites()"> Favourites </a> 
         <a class="dropdown-item" onclick="logOut()" href="#">Logout</a>
          </div>`
         document.getElementById('topRightNavbar').insertAdjacentHTML("afterbegin",navElement); 
@@ -185,7 +192,14 @@ function welcome() {
     
 }
 
-function goToProfileFavourites() {
+function goToProfileFavourites(id) {
+    if (id == 'profile') {
+        sessionStorage.setItem("tab",'tab_profile');
+    }
+    else {
+        sessionStorage.setItem("tab",'tab_favourites');
+    }
+    
     window.location.href="profile.html"
 }
 

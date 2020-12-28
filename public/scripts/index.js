@@ -21,7 +21,7 @@ function displayRestaurants() {
         var cuisine_color = restaurant_array[i].cuisine_color;
         var average_rating = restaurant_array[i].average.toFixed(1);
         var restaurant_image = restaurant_array[i].featured_url;
-        var cell = '<div class="col-md-3" style="float: none; margin: 0 auto;">' + 
+        var cell = '<div class="col-md-3">' + 
                     '<div class="card" style="margin:20px 0 20px 0;" >' +
                     '<a class="card-block stretched-link"' + 'id='+restaurant_id +' + href="#" onclick='+'getRestaurantInfo(this)'+'></a>' +
                     '<img class="card-img-top" src=' + restaurant_image + ' alt="Card image cap">' +
