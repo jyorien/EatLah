@@ -6,6 +6,7 @@ var user_address = document.getElementById("user_address");
 var user_email = document.getElementById("user_email");
 var user_number = document.getElementById("user_number");
 var user_password;
+var image_base64;
 
 
 function getUserDetails() {
@@ -35,7 +36,7 @@ function getUserDetails() {
        
 
 
-        var image_base64 = user_info[0].user_image;
+        image_base64 = user_info[0].user_image;
         if (image_base64 != null && image_base64 !=  undefined && image_base64 != "")
             image.src = image_base64;
     }
@@ -103,7 +104,7 @@ file_input.addEventListener('change', function(event) {
     reader.addEventListener('load', function(event) {
         image.src = event.target.result;
         file_base64 = event.target.result;
-        
+        localStorage.setItem("user_image",file_base64)
         updateUserImage(file_base64);
     });
     reader.readAsDataURL(file)
@@ -119,6 +120,7 @@ function updateUserImage(image) {
     request.open("PUT", url, true);
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function() {
+        
         location.reload();
     }
     request.send(JSON.stringify(image_object));
