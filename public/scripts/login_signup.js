@@ -55,7 +55,7 @@ function signUp() {
     }
 
     // check if name is valid 
-    const regex_name = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    const regex_name = /^[a-z ,.'-]+$/i;
     if (regex_name.test(new_first_name) === false || regex_name.test(new_last_name) === false) {
         alert("Your first and last names should only contain alphabets!");
         return
