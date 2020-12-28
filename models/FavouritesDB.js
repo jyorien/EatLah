@@ -32,6 +32,7 @@ class favouritesDB {
             }
             else {
                 respond.json(result);
+                console.log(sql, user_id)
             }
         })
     }
@@ -48,6 +49,7 @@ class favouritesDB {
             }
             else {
                 respond.json(result)
+                console.log(sql, values)
             }
         })
     }

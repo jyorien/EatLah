@@ -97,7 +97,7 @@
 
         <!-- Favourite button -->
         <div style="padding-left: 20px; display: inline;" > 
-        <button type="button" id="btn_favourite" class="btn btn-primary" style="background-color: #E2757F; border: none;"> 
+        <button type="button" id="btn_favourite" class="btn btn-primary" style="background-color: #E2757F; border: none;" onclick="add_or_delete_favourites()"> 
             <i class="fa fa-heart-o"></i> Add to Favourites </button>
         </div>
 
@@ -322,6 +322,7 @@
     </div>
                   
 <script> retrieveInfo()</script>
+<script> get_favourites()</script> 
 <script> retrieveComments()</script>
 <script> display_stars() </script>
 <script> set_button_attributes()</script>

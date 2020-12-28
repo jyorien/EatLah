@@ -588,3 +588,74 @@ function initMap() {
     })
 
   } 
+
+  function add_or_delete_favourites() {
+    // check if restaurant is already in user favourites
+    var request = new XMLHttpRequest();
+    var url = `/favourite/${localStorage.getItem('user_id')}`
+    request.open("GET", url ,true)
+    request.onload = function() {
+        var res_array = JSON.parse(request.responseText);
+
+        for (var i = 0; i < res_array.length; i++) {
+            if (res_array[i].restaurant_id == sessionStorage.getItem('restaurant_id')) {
+                delete_favourites();
+                console.log(res_array);
+                return
+            }
+        }
+        add_favourites();
+        console.log(res_array);
+    }
+    request.send();      
+  }
+
+function add_favourites() {
+    var fav_object = new Object();
+    fav_object.user_id = localStorage.getItem("user_id");
+    fav_object.restaurant_id = sessionStorage.getItem("restaurant_id");
+    var request = new XMLHttpRequest();
+    request.open('POST', '/favourites', true);
+    request.setRequestHeader("Content-type", "application/json");
+    request.onload = function() {
+        get_favourites();
+    }
+    request.send(JSON.stringify(fav_object));
+  }
+
+function delete_favourites() {
+    var response = confirm("Are you sure you want to remove this restaurant from favourites?");
+    if (response === true) {
+        var fav_object = new Object();
+        fav_object.user_id = localStorage.getItem("user_id");
+        fav_object.restaurant_id = sessionStorage.getItem("restaurant_id");
+    
+        var request = new XMLHttpRequest();
+        request.open('DELETE', '/favourites', true);
+        request.setRequestHeader("Content-type", "application/json");
+        request.onload = function() {
+            get_favourites();
+        }
+        request.send(JSON.stringify(fav_object));
+    }
+
+  }
+
+function get_favourites() {
+    // check if restaurant is already in user favourites
+    var request = new XMLHttpRequest();
+    var url = `/favourite/${localStorage.getItem("user_id")}`
+    request.open('GET', url, true);
+    request.onload = function() {
+        var res_array = JSON.parse(request.responseText)
+        for (var i = 0; i <  res_array.length; i++) {
+            if (res_array[i].restaurant_id == sessionStorage.getItem("restaurant_id")) {
+                // if restaurant is already in favourites
+                document.getElementById("btn_favourite").innerHTML = `<i class="fa fa-heart"></i> Remove from Favourites`
+                return
+            }
+            document.getElementById("btn_favourite").innerHTML = `<i class="fa fa-heart-o"></i> Add to Favourites`
+        }
+    }
+    request.send();
+  }
