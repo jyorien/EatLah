@@ -32,18 +32,29 @@ function retrieveInfo () {
     document.getElementById('res_name').innerHTML = name;
     document.getElementById('res_cuisine').innerHTML = cuisine;
     document.getElementById('res_badge').style.backgroundColor = cuisine_color;
-    //document.getElementById('average_overall_rating1').innerHTML = average_overall;
     document.getElementById('total_reviews').innerHTML = total_reviews;
     document.getElementById('description').innerHTML = description;
     document.getElementById('average_food_rating').innerHTML = average_food;
     document.getElementById('average_service_rating').innerHTML = average_service;
     document.getElementById('average_value_rating').innerHTML = average_value;
     document.getElementById('res_address').innerHTML = address;
-    document.getElementById('res_number').innerHTML = contact_number;
-    document.getElementById('res_url').innerHTML = url;
+    if (contact_number != 'null') {
+        document.getElementById('res_number').innerHTML = contact_number;
+    }
+    else {
+        document.getElementById('res_number').innerHTML = 'N/A';
+    }
+    
+    document.getElementById('res_url').innerHTML += url;
     document.getElementById('res_url').setAttribute("href", url)
     document.getElementById('res_url').setAttribute("target", "_blank")
-    document.getElementById('res_hours').innerHTML = operating_hours;
+
+    if (operating_hours != 'null') {
+        document.getElementById('res_hours').innerHTML = operating_hours;
+    }
+    else {
+        document.getElementById('res_hours').innerHTML = 'N/A';
+    }
     document.getElementById('res_image').setAttribute('src',image_url)
 
 

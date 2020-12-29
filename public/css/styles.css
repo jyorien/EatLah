@@ -10,11 +10,11 @@ body {
 }
 .search-style {
   position: absolute;
-  z-index:9999999;
-  top: 65%; /* change to whatever you want */
-  left: 15%; /* change to whatever you want */
-  right:auto; /* change to whatever you want */
-  bottom:auto; /* change to whatever you want */
+  z-index:999;
+  top: 65%; 
+  left: 15%; 
+  right:auto; 
+  bottom:auto; 
 }
 /* search component styles */
 #select_search,
@@ -35,13 +35,6 @@ body {
 }
 #button_search{
     width:45px;
-}
-.search-inputs {
-    text-align: center;
-    background-image: url("../images/search-bg-4.jpg");
-    background-size: contain;
-  /* top right btm left */
-    padding: 100px 50px 100px 50px;
 }
 
 /* white box for featured section */
@@ -181,10 +174,7 @@ body {
     font-weight: 600;
   }
 
-.test-class {
-  background-color: green !important;
-}
-
+  /* css grid for search page */
 .menu { grid-area: menu;}
 .main { grid-area: main;}
 
@@ -193,7 +183,6 @@ body {
   grid-template-areas: "menu main main main main main main" "menu main main main main main main" "menu main main main main main main";
 
 }
-
 .search-img { 
   margin-left: 10px;
   padding-top: 7px;
