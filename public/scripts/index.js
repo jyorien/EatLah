@@ -1,3 +1,7 @@
+sessionStorage.removeItem("search_region");
+sessionStorage.removeItem("search_cuisine");
+sessionStorage.removeItem("search_text");
+
 function getFeaturedRestaurantData() {
     var request = new XMLHttpRequest();
     request.open('GET', '/featured-restaurants')
@@ -69,17 +73,20 @@ function getRestaurantInfo(element) {
     }
     function getSearchResults() {
         var search_object = new Object();
-        search_object.text_search = document.getElementById('text_search').value; // string
-        var select_search = document.getElementById('select_search').value; // region
+        var text_search = document.getElementById('text_search').value;
+        var select_search = document.getElementById('select_search').value; 
+
+        // if text query is not empty
+        if (text_search != '') {
+            search_object.text_search = text_search;
+            sessionStorage.setItem('search_text', search_object.text_search);
+        }
         // if region select is not empty
         if (select_search != 'region') {
             search_object.region = select_search;
+            sessionStorage.setItem('search_region', select_search);
         }
-        else {
-            sessionStorage.removeItem("search_region");
-            sessionStorage.removeItem("search_cuisine");
-        }
-        
+
         var request_url = '/search-restaurants';
         var request = new XMLHttpRequest();
 
@@ -87,7 +94,6 @@ function getRestaurantInfo(element) {
         request.setRequestHeader("Content-type", "application/json");
         request.onload = function() {
             sessionStorage.setItem('search_results', request.responseText);
-            sessionStorage.setItem('search_text', search_object.text_search);
              window.location.href = 'search_results.html';
         }
         request.send(JSON.stringify(search_object));

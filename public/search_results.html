@@ -32,11 +32,11 @@
             </div>
 
             <div style="text-align: center; padding-top: 10%;">
-            <h4 > Filters </h4>
+            <h4 > Quick Search </h4>
 
             <h6 style="padding-top: 5%;"> Regions </h6>
-            <select id="select_region" onchange="getRegionFilterRestaurants(this.value)" style="width: 75%"> 
-                <option  disabled selected value> </option>
+            <select id="select_region" style="width: 75%"> 
+                <option selected value="none"> </option>
                 <option value="Pasir Ris"> Pasir Ris </option>
                 <option value="Tampines"> Tampines </option>
                 <option value="Simei"> Simei </option>
@@ -44,13 +44,14 @@
             </select>
 
             <h6 style="padding-top: 5%;"> Cuisines </h6> 
-            <select id="select_cuisine" onchange="getCuisineFilterRestaurants(this.value)" style="width: 75%">
-                <option  disabled selected value> </option>
+            <select id="select_cuisine" style="width: 75%">
+                <option selected value="none"> </option>
                 <option value="Japanese"> Japanese </option>
                 <option value="Korean">  Korean </option>
                 <option value="Western"> Western </option>
                 <option value="Chinese"> Chinese </option>
-            </select> 
+            </select><br><br>
+            <button class="btn btn-danger" onclick="getQuickSearchResults()"> Quick Search</button> 
 
             <h4 style="padding-top: 15%; padding-bottom: 10%;"> Sort By </h4>  
 

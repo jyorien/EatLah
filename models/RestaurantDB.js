@@ -46,7 +46,7 @@ class restaurantDB {
         console.log(request.body)
         console.log(search_query, region_query, cuisine_query)
         // if there is only regions search
-        if (typeof(search_query) === 'undefined' && typeof(cuisine_query) === 'undefined') {
+        if (typeof(search_query) === 'undefined' && typeof(cuisine_query) === 'undefined' && typeof(region_query) !== 'undefined') {
             region_query = `${region_query}`
             sql = `SELECT restaurant.*, region.region_name, cuisine.*, count(review.review_id) as total_reviews, avg(review.overall_rating) as average FROM eatlah_reviews.restaurant
             INNER JOIN eatlah_reviews.region ON restaurant.region_id = region.region_id
@@ -56,12 +56,11 @@ class restaurantDB {
             GROUP BY restaurant.restaurant_id
             ORDER BY avg(review.overall_rating) DESC`
             values = [region_query]
-            console.log("help")
 
         }
 
         // if there is only cuisine search
-        else if (typeof(search_query) === 'undefined' && typeof(region_query) === 'undefined') {
+        else if (typeof(search_query) === 'undefined' && typeof(region_query) === 'undefined' && typeof(cuisine_query) !== 'undefined') {
             console.log("hello")
             cuisine_query = `${request.body.cuisine}`
             sql = `SELECT restaurant.*, region.region_name, cuisine.*, count(review.review_id) as total_reviews, avg(review.overall_rating) as average FROM eatlah_reviews.restaurant
@@ -75,7 +74,7 @@ class restaurantDB {
 
         }
         // if there is only text search
-        else if (typeof(region_query) === 'undefined' && typeof(cuisine_query) === 'undefined') {
+        else if (typeof(region_query) === 'undefined' && typeof(cuisine_query) === 'undefined' && typeof(search_query) !== 'undefined') {
             search_query = `%${search_query}%`;
             sql = `SELECT restaurant.*, region.region_name, cuisine.*, count(review.review_id) as total_reviews, avg(review.overall_rating) as average FROM eatlah_reviews.restaurant
             INNER JOIN eatlah_reviews.region ON restaurant.region_id = region.region_id
@@ -87,7 +86,7 @@ class restaurantDB {
             values = [search_query]
         }
         // if there is text and region search
-        else if (typeof(cuisine_query) === 'undefined') {
+        else if (typeof(cuisine_query) === 'undefined' && typeof(region_query) !== 'undefined' && typeof(search_query) !== 'undefined') {
             search_query = `%${search_query}%`
             region_query = `${region_query}`
             
@@ -102,7 +101,7 @@ class restaurantDB {
         }
 
         // if there is region and cuisine search
-        else if (typeof(search_query) === 'undefined') {
+        else if (typeof(search_query) === 'undefined' && typeof(region_query) !== 'undefined' && typeof(cuisine_query) !== 'undefined') {
             cuisine_query = `${cuisine_query}`
             region_query = `${region_query}`
             
@@ -114,6 +113,14 @@ class restaurantDB {
             GROUP BY restaurant.restaurant_id
             ORDER BY avg(review.overall_rating) DESC`
             values = [region_query, cuisine_query]
+        }
+        else if (typeof(region_query) === 'undefined' && typeof(cuisine_query) === 'undefined' && typeof(search_query) === 'undefined') {
+            sql = `SELECT restaurant.*, region.region_name, cuisine.*, count(review.review_id) as total_reviews, avg(review.overall_rating) as average FROM eatlah_reviews.restaurant
+            INNER JOIN eatlah_reviews.region ON restaurant.region_id = region.region_id
+            INNER JOIN eatlah_reviews.cuisine ON restaurant.cuisine_id = cuisine.cuisine_id
+            INNER JOIN eatlah_reviews.review ON restaurant.restaurant_id = review.restaurant_id
+            GROUP BY restaurant.restaurant_id
+            ORDER BY avg(review.overall_rating) DESC`
         }
         
         

@@ -97,7 +97,7 @@ class reviewDB {
             }
             else {
                 respond.json(result);
-                console.log(sql);
+                console.log(sql, request.body.review_id);
             }
         })
     }

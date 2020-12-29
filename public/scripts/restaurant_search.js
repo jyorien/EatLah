@@ -10,30 +10,43 @@ function display() {
     var search_cuisine = sessionStorage.getItem("search_cuisine");
     var search_region = sessionStorage.getItem("search_region");
     var search_text = sessionStorage.getItem("search_text");
-    if (search_cuisine != null && search_cuisine != undefined && search_region == undefined) {
-        console.log("cuisine and no region")
+
+    // only cuisine
+    if (search_cuisine != undefined && search_region == undefined && search_text == undefined) {
         document.getElementById('result_text').innerHTML = `Looking for ${search_cuisine} in Singapore?`;
         document.getElementById('select_cuisine').value= search_cuisine;
     }
-    else if (search_region != null && search_region != undefined && search_cuisine == undefined) {
-        console.log("region and no cuisine")
+    
+    // only region
+    else if (search_region != undefined && search_cuisine == undefined && search_text == undefined) {
         document.getElementById('result_text').innerHTML = `Looking for food in ${search_region}?`;
         document.getElementById('select_region').value=search_region;
     }
-    else if (search_cuisine != undefined && search_region != undefined) {
-        console.log("region and cuisine")
+
+    // cuisine and region
+    else if (search_cuisine != undefined && search_region != undefined && search_text == undefined) {
         document.getElementById('result_text').innerHTML = `Looking for ${search_cuisine} in ${search_region}?`;
         document.getElementById('select_cuisine').value=search_cuisine;
-
-        //document.getElementById('search_region').innerHTML = search_region;
         document.getElementById('select_region').value=search_region;
     }
-    if (search_text != undefined) {
-        console.log("text result")
+
+    // text only
+    else if (search_cuisine == undefined && search_region == undefined && search_text != undefined) {
         document.getElementById('result_text').innerHTML = `Results for ${search_text}`;
         sessionStorage.removeItem("search_text")
     }
+    
+    // region and text
+    else if (search_cuisine == undefined && search_region != undefined && search_text != undefined) {
+        document.getElementById('result_text').innerHTML = `Looking for ${search_text} in ${search_region}?`;
+        document.getElementById('select_region').value=search_region;
+    }
 
+    else if (search_cuisine == undefined && search_region == undefined && search_text == undefined) {
+        document.getElementById('result_text').innerHTML = `Displaying all restaurants`;
+    }
+
+    // if no results
     if (search_results.length == 0) {
         console.log("text no result")
         document.getElementById("result_text").innerHTML = "No results"
@@ -109,13 +122,25 @@ function getRestaurantInfo(element) {
 
 }
 
-// when user selects a region
-function getRegionFilterRestaurants(region) {
-    var region_object = new Object();
+// when user clicks on 'Quick Search'
+function getQuickSearchResults() {
+    var result_object = new Object();
     var selected_cuisine = document.getElementById('select_cuisine').value;
-    region_object.region = region;
-    if (selected_cuisine != "") {
-        region_object.cuisine = selected_cuisine;
+    var selected_region = document.getElementById('select_region').value;
+
+    if (selected_cuisine != 'none') {
+        result_object.cuisine = selected_cuisine;
+        sessionStorage.setItem('search_cuisine', selected_cuisine)
+    }
+    else {
+        sessionStorage.removeItem('search_cuisine')
+    }
+    if (selected_region != 'none') {
+        result_object.region = selected_region;
+        sessionStorage.setItem('search_region', selected_region);
+    }
+    else {
+        sessionStorage.removeItem('search_region')
     }
 
     var request = new XMLHttpRequest();
@@ -125,35 +150,11 @@ function getRegionFilterRestaurants(region) {
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function () {
         sessionStorage.setItem('search_results', request.responseText);
-        sessionStorage.setItem('search_region', region);
-
         location.reload();
             
     }
-    request.send(JSON.stringify(region_object));
-        
-}
+    request.send(JSON.stringify(result_object));
 
-// when user selects a cuisine
-function getCuisineFilterRestaurants(cuisine) {
-    var cuisine_object = new Object();
-    var selected_region = document.getElementById('select_region').value;
-    cuisine_object.cuisine = cuisine;
-    if (selected_region != "") {
-        cuisine_object.region = selected_region;
-    }
-    var request = new XMLHttpRequest();
-    var request_url = '/search-restaurants'
-
-    request.open('POST', request_url)
-    request.setRequestHeader("Content-type", "application/json");
-    request.onload = function () {
-        sessionStorage.setItem('search_results', request.responseText);
-        sessionStorage.setItem('search_cuisine', cuisine);
-        location.reload();
-        
-    }
-    request.send(JSON.stringify(cuisine_object));
 
 }
 

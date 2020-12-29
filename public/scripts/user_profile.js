@@ -1,3 +1,7 @@
+sessionStorage.removeItem("search_region");
+sessionStorage.removeItem("search_cuisine");
+sessionStorage.removeItem("search_text");
+
 var user_fn = document.getElementById("user_fn");
 var user_ln = document.getElementById("user_ln");
 var user_un = document.getElementById("user_un");
@@ -153,7 +157,7 @@ function updateUserDetails() {
 
     // check if mobile number is numeric
     const regex_num = /^\d+$/;
-    if (regex_num.test(user_object.mobile_number) === false) {
+    if (regex_num.test(user_object.mobile_number) === false && user_object.mobile_number != "") {
         alert("Your mobile number should only have digits!")
         return
     }

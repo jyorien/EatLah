@@ -21,8 +21,30 @@
     <div w3-include-html="login_modal.html"></div>
     <div w3-include-html="sign_up_modal.html"></div>
 
- 
-        <div class="search-inputs">  
+    <div id="search_carousel" class="container carousel slide" data-ride="carousel" data-interval="3000">
+      <div class="search-style">  
+        <select id="select_search" name="regions"> 
+          <option value="region"> region </option> 
+          <option value="Pasir Ris" > Pasir Ris </option>
+          <option value="Tampines" > Tampines </option>
+          <option value="Simei" > Simei </option>
+          <option value="Bedok" > Bedok </option>
+      </select><input id="text_search" type="text" placeholder="Search for a restaurant name..."/><button id="button_search" type="button" onclick="getSearchResults()"> <i class="fa fa-search"> </i></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="images/bg-1.jpg">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="images/bg-2.jpg">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="images/bg-3.jpg">
+        </div>
+      </div>
+    </div>
+
+        <!-- <div class="search-inputs">  
             <select id="select_search" name="regions"> 
                 <option value="region"> region </option> 
                 <option value="Pasir Ris" > Pasir Ris </option>
@@ -30,10 +52,10 @@
                 <option value="Simei" > Simei </option>
                 <option value="Bedok" > Bedok </option>
             </select><input id="text_search" type="text"/><button id="button_search" type="button" onclick="getSearchResults()"> <i class="fa fa-search"> </i></button>
-            </div>
+            </div> -->
 
 
-      <div class="container featured-box">
+      <div class="container featured-box" style="margin-top: 148px;">
           <h3>Featured</h3> 
           <div id="restaurantsTable"class="row">
             <!-- Restaurant Card Template -->

@@ -500,7 +500,7 @@ function delete_review(element) {
     if (response === true) {
         delete_object = new Object();
         // get id of review
-        delete_object.review_id = element.parentNode.parentNode.id;
+        delete_object.review_id = element.parentNode.parentNode.parentNode.parentNode.id;
     
         var request = new XMLHttpRequest();
         request.open('DELETE', '/reviews', true);
