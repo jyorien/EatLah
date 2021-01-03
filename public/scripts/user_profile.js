@@ -41,6 +41,7 @@ function getUserDetails() {
 
 
         image_base64 = user_info[0].user_image;
+        console.log(image_base64)
         if (image_base64 != null && image_base64 !=  undefined && image_base64 != "")
             image.src = image_base64;
     }

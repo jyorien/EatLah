@@ -97,22 +97,6 @@ class userDB{
 
     }
 
-     updateUserFirstName(request, respond) {
-       
-        var userObject = new User(request.params.username, request.body.firstname);
-
-        var sql = "UPDATE eatlah_restaurant_review.user SET first_name = ? WHERE username = ?";
-        var values = [userObject.getFirstName(), userObject.getUserId()];
-        db.query(sql, values, function (error, result) {
-            if(error){
-                throw error;
-            }
-            else{
-                respond.json(result);
-            }
-          });
-    }
-
     updateUserDetails(request, respond) {
         var user_id = request.params.id;
         var first_name = request.body.first_name;
@@ -160,7 +144,6 @@ class userDB{
                 throw error;
             }
             else {
-                //console.log(Buffer.from(result[0].user_image,'base64').toString('ascii'));
                 if (result[0].user_image !== 'null' && result[0].user_image != undefined && result[0].user_image != "") {
                     result[0].user_image = Buffer.from(result[0].user_image,'base64').toString('ascii');
                 }
@@ -173,7 +156,7 @@ class userDB{
 
     deleteUser(request, respond) {
         var user_id = request.params.id;
-        var sql = "DELETE from USER WHERE user_id = ?";
+        var sql = "DELETE from user WHERE user_id = ?";
         db.query(sql, user_id, function(error,result) {
             if (error) {
                 throw error;

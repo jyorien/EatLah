@@ -448,7 +448,8 @@ function add_review() {
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function() {
             sessionStorage.setItem("total_reviews", parseInt(total_reviews) + 1)
-            getRestaurantDetails()
+            getRestaurantDetails();
+            retrieveInfo();
             location.reload();
             
             
@@ -519,6 +520,7 @@ function delete_review(element) {
         request.onload = function() {
                 sessionStorage.setItem("total_reviews", parseInt(total_reviews) - 1);
                 getRestaurantDetails();
+                retrieveInfo();
                 location.reload();
         }
         request.send(JSON.stringify(delete_object));
@@ -555,7 +557,9 @@ function update_review() {
         request.open('PUT', '/reviews', true)
         request.setRequestHeader("Content-type", "application/json");
         request.onload = function() {
-                location.reload();
+            getRestaurantDetails();
+            retrieveInfo();
+            location.reload();
         }
         request.send(JSON.stringify(update_object));
     }
