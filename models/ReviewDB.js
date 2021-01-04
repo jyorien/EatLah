@@ -33,8 +33,8 @@ class reviewDB {
         var hour = now.getHours() % 12;
         var minute = now.getMinutes();
         var date = now.getDate();
-        var month = now.getMonth();
-        var year = now.getFullYear()
+        var month = now.getMonth()+1;
+        var year = now.getFullYear();
         var am_or_pm = ""
         function format_am_or_pm() {
             if (now.getHours() > 0 && now.getHours() < 12) {

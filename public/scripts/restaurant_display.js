@@ -657,7 +657,7 @@ function delete_favourites() {
         request.open('DELETE', '/favourites', true);
         request.setRequestHeader("Content-type", "application/json");
         request.onload = function() {
-            get_favourites();
+            location.reload();
         }
         request.send(JSON.stringify(fav_object));
     }
