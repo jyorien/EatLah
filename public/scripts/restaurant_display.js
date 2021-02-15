@@ -574,7 +574,7 @@ function geocode() {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
           address: location,
-          key: 'AIzaSyBkKFpDIZcEtgeEcoad8QUBZPDozuE8z8w'
+          key: ''
         }
       })
       .then(function(response) {
@@ -586,7 +586,7 @@ function geocode() {
         console.log(coordinates)
 
         var script = document.createElement('script');
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKFpDIZcEtgeEcoad8QUBZPDozuE8z8w&callback=initMap&libraries=&v=weekly'
+        script.src = 'https://maps.googleapis.com/maps/api/js?key='+key+'&callback=initMap&libraries=&v=weekly'
         script.setAttribute('defer', 'defer');
         document.body.appendChild(script);
       })
