@@ -586,7 +586,7 @@ function geocode() {
         console.log(coordinates)
 
         var script = document.createElement('script');
-        script.src = 'https://maps.googleapis.com/maps/api/js?key='+key+'&callback=initMap&libraries=&v=weekly'
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=INSERTAPIKEY&callback=initMap&libraries=&v=weekly'
         script.setAttribute('defer', 'defer');
         document.body.appendChild(script);
       })
